@@ -1,6 +1,6 @@
-var fs = require("fs");
-var path = "./data/lorem.txt";
-var fsp = require("./lib/fsp");
+const fs = require("fs");
+const path = "./data/lorem.txt";
+const fsp = require("./lib/fsp");
 
 // fs.readFile(path, "utf8", function(err, data) {
 //   if (err) throw err;
