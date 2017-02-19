@@ -1,4 +1,6 @@
 "use strict";
+
+let fsp = require("./fsp.js");
 /* Demonstration Purposes
 let p = new Promise(function(resolve, reject) {
     setTimeout(resolve.bind(null, "Hello Promise!"), 3000);
@@ -107,6 +109,42 @@ p2.then(function onFulfilled(data) {
 
 //Promise from last chained then or catch fizzles for now
 //Error stop at the first method that catches them. Method can element to continue to throw the error. But this will occur if onRejected handlers are omitted
+
+
+
+//See if fsp module is working properly
+
+fsp.readFile('./data/secretmessages.txt')
+  .then(function(data) {
+    // Outputs the file data
+    console.log("Reading data from readFile call", data);
+  })
+  .catch(function(err) {
+    console.error(err);
+  });
+
+fsp.appendFile('./data/secretmessages.txt', 'ByeILikeSkatesbyeKonichiwaagain!ThisisJustjustwritingOver')
+  .then(function(res) {
+    // Outputs the file data
+    // after appending
+    console.log("File append successful", res);
+  })
+  .catch(function(err) {
+    console.error(err);
+  });
+
+fsp.writeFile('./data/secretmessages.txt', 'Hello!')
+  .then(function(res) {
+    // Outputs the file data
+    // after writing
+    console.log("File write successful", res);
+  })
+  .catch(function(err) {
+    console.error(err);
+  });
+
+
+
 
 
 
