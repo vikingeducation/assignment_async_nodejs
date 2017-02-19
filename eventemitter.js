@@ -38,11 +38,29 @@ function EventEmitter() {
             });
         }
     };
+    /** Removes a callback from the callbacks array of the given eventType
+     * Will only remove one of the callbacks if multiples of the same callback are present
+     * @params eventType [String] string of eventType
+     * @params callBack [Function] reference to the function to remove
+     * @return undefined. Maybe make true or false depending on success, Wrap in promise?
+     * */
+    
     this.removeListener = function removeListener(eventType, callback) {
+        //See if eventType is in the listener property
+        //If so, see if there is a matching reference for the function passed in callback
+        //If so, remove it.
+        //If the array for this callback is now empty, remove the eventType property from the listeners
+        
+        
         
     };
+    /** Deletes an eventType property from a listeners object
+     * @params eventType [String] event type to remove
+     * @return undefined
+     * Extend to return true if property is own non-configurable property, else throws an error
+    **/
     this.removeAllListeners = function removeAllListeners(eventType) {
-        
+        delete this.listeners[eventType];
     };
 }
 
