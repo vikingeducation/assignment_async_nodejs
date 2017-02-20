@@ -1,7 +1,6 @@
 "use strict";
 
 function EventEmitter() {
-    this.listeners = {};
     
     /** Adds a callback for a given eventType to the emitter obj
      * Will add multiples of a callback for a eventType if invoked. No unique callback identifier.
@@ -13,28 +12,29 @@ function EventEmitter() {
     
     this.on = function on(eventType, callback) {
         //check listeners obj for eventType
-        if (this.listeners[eventType]) { //Does removing a listener that becomes an empty array delete the property?
-            this.listeners[eventType].push(callback);
+        if (this._events[eventType]) { //Does removing a listener that becomes an empty array delete the property?
+            this._events[eventType].push(callback);
         }
         else {
-            this.listeners[eventType] = [callback];
+            this._events[eventType] = [callback];
         }
         //if already a key, push callback onto the array
         //else create new key for eventType with callback as the value in an array.
         //reference to the emitter obj that also calls "on"
         
     };
-    /** Calls all callbacks for a given eventType with the emitter. Calls each function as it was bound or defaults to global.
+    /** Calls all callbacks for a given eventType with the emitter. Intentionally calls each function as if it was bound to the eventEmitter defaults.
      * @params eventType [String] string representation of event type
+     * @params arguments [Array] arbitrarily long arguments list which is also used in the call to the cb
      * @return undefined
      * */
-    this.emit = function emit(eventType) {
+    this.emit = function emit(eventType, ...args) {
         //Look up the eventType in emitter.listener obj
-        let cbs = this.listeners[eventType];
+        let cbs = this._events[eventType];
         if (Array.isArray(cbs) && cbs.length > 0) { //checks that there is an Array at this property and is not empty
             //call each function in the array
             cbs.forEach(function (element, index, arr) { //calls occur async
-                element();
+                element.call(this, ...args);
             });
         }
     };
@@ -46,7 +46,7 @@ function EventEmitter() {
      * */
     
     this.removeListener = function removeListener(eventType, callback) {
-        let listeners = this.listeners[eventType]; //See if eventType is in the listener property
+        let listeners = this._events[eventType]; //See if eventType is in the listener property
 
         if (listeners) {//If so, loop through the array to see if there is a matching reference for the function passed in callback
             //If so, remove it.
@@ -60,21 +60,17 @@ function EventEmitter() {
                 else {
                     i++;
                 }
-            }
-            //If the array for this callback is now empty, remove the eventType property from the listeners
-            if (listeners.length === 0) {
-                delete this.listeners[eventType];
-            }
+            }//Even if handlers array is empty for an event, leave the empty array
         }
         //If there are no listeners of property eventType, then finish
     };
-    /** Deletes an eventType property from a listeners object
+    /** Sets handlers back to empty array an eventType property from a listeners object
      * @params eventType [String] event type to remove
      * @return undefined
      * Extend to return true if property is own non-configurable property, else throws an error
     **/
     this.removeAllListeners = function removeAllListeners(eventType) {
-        delete this.listeners[eventType];
+        this._events[eventType] = [];
     };
 }
 
