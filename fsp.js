@@ -2,12 +2,6 @@
 
 let fs = require("fs");
 
-function promisify(fn) {
-    return new Promise(function (resolve, reject) {
-        fn.call(null);
-    });
-}
-
 
 let fsp = {
     "readFile" : function (path) {
