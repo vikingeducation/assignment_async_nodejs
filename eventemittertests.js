@@ -75,7 +75,7 @@ nativeEmitterWithSubs.on("click", clickHandler);
 console.log("customEmitter listeners property should be undefined:", customEmitter.listeners);
 console.log("nativeEmitterWithSubs listerner property should be a function with properties", nativeEmitterWithSubs.listeners);
 console.log("nativeEmitter listerner property should be a function with properties", nativeEmitter.listeners);
-console.log("nativeEmitter listerner property should be a function with properties", nativeEmitter.on);
+console.log("nativeEmitter on property should be a function with properties", nativeEmitter.on);
 console.log("Emit click event. Expect 'click event cb called'");
 nativeEmitterWithSubs.emit("click");
 console.log("Expect one listener on click listern called clickHandler");
