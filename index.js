@@ -63,3 +63,29 @@ function doBadThing (forRealz) {
 }
 doBadThing(true);
 doBadThing(false);
+
+// File Op 1
+var fsp = require('fsp');
+// var pathLorem = './data/lorem.txt';
+// var pathTest = './data/test.txt';
+fsp.readFile('./data/lorem.txt')
+.then(function (data) {
+	console.log(data);
+})
+.catch(function (err) {
+	console.error(err);
+});
+fsp.writeFile('./data/test.txt', 'Hello!')
+.then(function (res) {
+	console.log(res);
+})
+.catch(function (err) {
+	console.error(err);
+});
+fsp.appendFile('./data/test.txt', 'Hello again!')
+.then(function (res) {
+	console.log(res);
+})
+.catch(function (err) {
+	console.error(err);
+});
