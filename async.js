@@ -89,30 +89,62 @@
 
 // 5.
 
-var fsp = require('./lib/fsp');
+// var fsp = require('./lib/fsp');
+//
+// fsp.readFile('./data/lorem.txt')
+//   .then(function(data) {
+//     console.log(data);
+//   })
+//   .catch(function(err) {
+//     console.error(err);
+//   });
+//
+// fsp.writeFile('./data/test.txt', 'Hello!')
+//   .then(function(res) {
+//     console.log(res);
+//   })
+//   .catch(function(err) {
+//     console.error(err);
+//   });
+//
+// fsp.appendFile('./data/test.txt', 'Hello again!')
+//   .then(function(res) {
+//     // Outputs the file data
+//     // after appending
+//     console.log(res);
+//   })
+//   .catch(function(err) {
+//     console.error(err);
+//   });
 
-fsp.readFile('./data/lorem.txt')
-  .then(function(data) {
-    console.log(data);
-  })
-  .catch(function(err) {
-    console.error(err);
-  });
+// 6.
 
-fsp.writeFile('./data/test.txt', 'Hello!')
-  .then(function(res) {
-    console.log(res);
-  })
-  .catch(function(err) {
-    console.error(err);
-  });
+//official:
+// var Emitter = require('events');
+//
+var Emitter = require('./lib/Emitter');
+var emitter = new Emitter();
+emitter.on('connection', listener1);
 
-fsp.appendFile('./data/test.txt', 'Hello again!')
-  .then(function(res) {
-    // Outputs the file data
-    // after appending
-    console.log(res);
-  })
-  .catch(function(err) {
-    console.error(err);
-  });
+var listener1 = function listener1() {
+   console.log('listener1 executed.');
+};
+
+var listener2 = function listener2() {
+  console.log('listener2 executed.');
+};
+
+var listener3 = function listener3() {
+  console.log('listener3 executed.');
+};
+//
+// emitter.on('connection', listener1);
+// emitter.on('connection', listener2);
+// emitter.on('sleep', listener3);
+
+//emitter.emit('sleep');
+
+//emitter.removeListener('connection', listener2);
+// emitter.removeAllListeners('connection');
+// emitter.emit('connection');
+//console.log(emitter);
