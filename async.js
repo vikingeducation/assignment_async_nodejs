@@ -66,24 +66,53 @@
 
 // 4.
 
-var doBadThing = function(forRealz) {
-  return new Promise(function(resolve, reject) {
-    if (!forRealz) {
-      resolve("Yay!");
-    }
-    else {
-      reject("Meh");
-    }
-  });
-};
+// var doBadThing = function(forRealz) {
+//   return new Promise(function(resolve, reject) {
+//     if (!forRealz) {
+//       resolve("Yay!");
+//     }
+//     else {
+//       reject("Meh");
+//     }
+//   });
+// };
+//
+// doBadThing(false)
+//   .then(function(result) {
+//     console.log(result); //meh
+//     throw("But also:");
+//   })
+//   .catch(function(err) {
+//     console.error(err); //yay
+//   });
 
-doBadThing(false)
-  .then(function(result) {
-    console.log(result); //meh
-    throw("But also:");
+
+// 5.
+
+var fsp = require('./lib/fsp');
+
+fsp.readFile('./data/lorem.txt')
+  .then(function(data) {
+    console.log(data);
   })
   .catch(function(err) {
-    console.error(err); //yay
+    console.error(err);
   });
 
-  // Throw happens after catch even if it's placed before
+fsp.writeFile('./data/test.txt', 'Hello!')
+  .then(function(res) {
+    console.log(res);
+  })
+  .catch(function(err) {
+    console.error(err);
+  });
+
+fsp.appendFile('./data/test.txt', 'Hello again!')
+  .then(function(res) {
+    // Outputs the file data
+    // after appending
+    console.log(res);
+  })
+  .catch(function(err) {
+    console.error(err);
+  });
