@@ -1,29 +1,28 @@
 _ = require('lodash');
 
 function EventEmmitter(){
-	this.listeners = [];
+	this.listeners = {};
 	this.on = function(ev, func){
-		this.listeners.push({
-			eventName: ev,
-			listener: func
-		});
+		if (this.listeners[ev]) {
+			this.listeners[ev].push(func);
+		} else {
+			this.listeners[ev] = [func];
+		}
 	};
 	this.emit = function(eventType){
-		for (var i = 0; i < this.listeners.length; i++) {
-			if (this.listeners[i].eventName == eventType) {
-				this.listeners[i].listener();
-			}
+		if (this.listeners[eventType]) {
+			this.listeners[eventType].forEach(function(func){
+				func();
+			});
 		}
 	};
 	this.removeListener = function(ev, func){
-		_.remove(this.listeners, function(e){
-			return (e.eventName == ev && e.listener == func);
+		_.remove(this.listeners[ev], function(e){
+			return e == func;
 		});
 	};
 	this.removeAllListeners = function(ev){
-		_.remove(this.listeners, function(e){
-			return e.eventName == ev;
-		});
+		delete this.listeners[ev];
 	};
 };
 
