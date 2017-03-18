@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/William-Charles/assignment_async_nodejs#readme",
   "dependencies": {
+    "events": "^1.1.1",
     "fs": "0.0.1-security"
   }
 }

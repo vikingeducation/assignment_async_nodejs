@@ -1,38 +1,62 @@
 //
 //
-debugger;
+
 var fsp = require("./fsp");
+var Emitter = require("./emitter");
+//var Emitter = require("events");
 
-fsp.writeFile("./tests.txt", "hello ").then(
-  function(res) {
-    console.log(res);
-  },
-  function(err) {
-    console.log(err);
-  }
-);
+var emitter = new Emitter();
 
-fsp
-  .readFile("./data/lorem.txt")
-  .then(function(data) {
-    // Outputs the file data
-    console.log(data);
-  })
-  .catch(function(err) {
-    console.error(err);
-  });
+emitter.on("click", function() {
+  console.log("Success. The listener fired");
+});
+emitter.on("click", function() {
+  console.log("Success. The listener fired");
+});
+emitter.on("click", function() {
+  console.log("Success. The listener fired");
+});
 
-fsp
-  .appendFile("./tests.txt", "Hello again!")
-  .then(function(res) {
-    // Outputs the file data
-    // after appending
-    console.log(res);
-  })
-  .catch(function(err) {
-    console.error(err);
-  });
+emitter.removeListener("click", function() {
+  console.log("finished removal");
+});
 
+emitter.emit("click");
+
+emitter.removeAllListeners(["click"]);
+
+emitter.emit("click");
+
+// fsp.writeFile("./tests.txt", "hello ").then(
+//   function(res) {
+//     console.log(res);
+//   },
+//   function(err) {
+//     console.log(err);
+//   }
+// );
+//
+// fsp
+//   .readFile("./data/lorem.txt")
+//   .then(function(data) {
+//     // Outputs the file data
+//     console.log(data);
+//   })
+//   .catch(function(err) {
+//     console.error(err);
+//   });
+//
+// fsp
+//   .appendFile("./tests.txt", "Hello again!")
+//   .then(function(res) {
+//     // Outputs the file data
+//     // after appending
+//     console.log(res);
+//   })
+//   .catch(function(err) {
+//     console.error(err);
+//   });
+//
 // var firstPromise = new Promise(function(resolve, reject) {
 //   resolve("Hello Promise");
 // });
