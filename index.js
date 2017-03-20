@@ -1,3 +1,8 @@
+require
+
+
+
+
 // 1 -
 
 // var p = new Promise(function(resolve, reject) {
@@ -45,17 +50,17 @@
 
 // 3 -
 
-// function promiseSquared(number) {
+function promiseSquared(number) {
 
-//   var p = new Promise(function(resolve, reject) {
-//     if (typeof number === 'number') {
-//       resolve(number * number);
-//     } else {
-//       reject('REJECTED');
-//     }
-//   });
-//   return p;
-// }
+  var p = new Promise(function(resolve, reject) {
+    if (typeof number === 'number') {
+      resolve(number * number);
+    } else {
+      reject('REJECTED');
+    }
+  });
+  return p;
+}
 
 // var nums = [1,2,3,4,5,6,7,8,9];
 // nums = nums.map(function(number) {
