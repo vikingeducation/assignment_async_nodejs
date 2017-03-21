@@ -73,12 +73,19 @@
 ////////////////////////////////////////////
 
 var Emitter = require('./lib/my-emitter.js');
-var emitter = new Emitter
+var f1 = function() {
+  console.log("delayed");
+}
 
-emitter.on("boobs", function() {
+var f2 = function() {
   console.log("heyo");
-})
-// emitter.emit("boobs")
+}
 
-console.log(emitter.events);
-emitter.emit("boobs")
+var emitter = new Emitter;
+
+emitter.on("thing", f1)
+emitter.on("stuff", f2)
+
+
+emitter.emit("thing").removeListener("thing", f1).emit("thing")
+
