@@ -1,4 +1,46 @@
-require
+const EventEmitter = require('./eventEmitter.js');
+
+var eventEmitter = new EventEmitter();
+
+console.log(eventEmitter);
+
+
+eventEmitter.on('click', () => {
+  console.log('I said clicked');
+});
+
+function mouse() {
+  console.log('moused');
+}
+
+eventEmitter.on('mouse', mouse);
+
+console.log(eventEmitter);
+
+eventEmitter.emit('click');
+eventEmitter.emit('mouse');
+
+eventEmitter.removeListener('mouse', mouse);
+
+console.log(eventEmitter);
+
+
+
+//console.log(eventEmitter.listeners;
+
+
+// var Emitter = require('./eventEmitter.js');
+
+// var emitter = new Emitter();
+
+// console.log(emitter);
+
+// emitter.displayName();
+
+// var emitter = new Emitter();
+
+// console.log(emitter.name);
+// emitter.displayName();
 
 
 
@@ -50,17 +92,17 @@ require
 
 // 3 -
 
-function promiseSquared(number) {
+// function promiseSquared(number) {
 
-  var p = new Promise(function(resolve, reject) {
-    if (typeof number === 'number') {
-      resolve(number * number);
-    } else {
-      reject('REJECTED');
-    }
-  });
-  return p;
-}
+//   var p = new Promise(function(resolve, reject) {
+//     if (typeof number === 'number') {
+//       resolve(number * number);
+//     } else {
+//       reject('REJECTED');
+//     }
+//   });
+//   return p;
+// }
 
 // var nums = [1,2,3,4,5,6,7,8,9];
 // nums = nums.map(function(number) {
@@ -74,25 +116,25 @@ function promiseSquared(number) {
 
 // 4 -
 
-function doBadThing(forRealz) {
-  var p = new Promise(function(resolve, reject) {
-    if (!forRealz) {
-      resolve('Yay!');
-    } else {
-      reject('reJected');
-    }
-  });
-  return p;
-}
+// function doBadThing(forRealz) {
+//   var p = new Promise(function(resolve, reject) {
+//     if (!forRealz) {
+//       resolve('Yay!');
+//     } else {
+//       reject('reJected');
+//     }
+//   });
+//   return p;
+// }
 
-doBadThing(false)
-.then(function(result) {
-  console.log(result);
-  throw "Error";
-})
-.catch(function(rejected) {
-  console.log(rejected);
-});
+// doBadThing(false)
+// .then(function(result) {
+//   console.log(result);
+//   throw "Error";
+// })
+// .catch(function(rejected) {
+//   console.log(rejected);
+// });
 
 // doBadThing(false)
 // .then(function(result) {
