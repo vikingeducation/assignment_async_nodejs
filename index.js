@@ -75,7 +75,10 @@
 var Emitter = require('./lib/my-emitter.js');
 var emitter = new Emitter
 
-emitter.on("boobs", "things")
+emitter.on("boobs", function() {
+  console.log("heyo");
+})
 // emitter.emit("boobs")
 
-console.log(emitter.events)
+console.log(emitter.events);
+emitter.emit("boobs")
