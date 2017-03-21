@@ -2,47 +2,24 @@ const EventEmitter = require('./eventEmitter.js');
 
 var eventEmitter = new EventEmitter();
 
-console.log(eventEmitter);
+// eventEmitter.on('click', () => {
+//   console.log('I said clicked');
+// });
 
+// function mouse() {
+//   console.log('moused');
+// }
 
-eventEmitter.on('click', () => {
-  console.log('I said clicked');
-});
+// eventEmitter.on('mouse', mouse);
 
-function mouse() {
-  console.log('moused');
-}
+// console.log(eventEmitter);
 
-eventEmitter.on('mouse', mouse);
+// eventEmitter.emit('click');
+// eventEmitter.emit('mouse');
 
-console.log(eventEmitter);
+// eventEmitter.removeListener('mouse', mouse);
 
-eventEmitter.emit('click');
-eventEmitter.emit('mouse');
-
-eventEmitter.removeListener('mouse', mouse);
-
-console.log(eventEmitter);
-
-
-
-//console.log(eventEmitter.listeners;
-
-
-// var Emitter = require('./eventEmitter.js');
-
-// var emitter = new Emitter();
-
-// console.log(emitter);
-
-// emitter.displayName();
-
-// var emitter = new Emitter();
-
-// console.log(emitter.name);
-// emitter.displayName();
-
-
+// console.log(eventEmitter);
 
 
 // 1 -

@@ -1,21 +1,5 @@
 const fs = require('fs');
 
-// fs.readFile('./dummy.txt', 'utf8', function(err, data) {
-//   if (err) {
-//     throw err;
-//   } else {
-//     console.log(data);
-//   }
-// })
-
-// fs.writeFile('./dummy.txt', 'There', function(err, data) {
-//   if (err) {
-//     throw err;
-//   } else {
-//     console.log(data);
-//   }
-// });
-
 function wrappedReadFile(filePath) {
   var p = new Promise(function(resolve, reject) {
     fs.readFile(filePath, 'utf8', function(err, data) {
@@ -89,15 +73,4 @@ fsp.writeFile('./dummy.txt', 'Hello!!!!!!!!!!!')
   .catch(function(err) {
     console.error(err);
   });
-
-
-
-
-
-
-
-
-
-
-
 
