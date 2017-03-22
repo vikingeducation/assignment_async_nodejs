@@ -2,7 +2,7 @@ var p = Promise.resolve('hello');
 
 p.then(function(message) {
   setTimeout(function() {
-    console.log(message)
+    console.log(message);
   }, 1000)
 });
 //////////////////////////////////////
@@ -10,7 +10,7 @@ p.then(function(message) {
 function delay(milliseconds) {
   return new Promise(function(resolve, reject) {
     setTimeout(function() {
-      resolve(milliseconds)
+      resolve(milliseconds);
     }, milliseconds)
   });
 };
@@ -35,7 +35,7 @@ function square(num) {
       error("not a number");
     } else {
       value(num*num);
-    }
+    };
   });
   return p;
 };
@@ -60,14 +60,14 @@ function doBadThing(forRealz) {
       reject('reject the truth!!')
     } else {
       resolve('EMBRACE THE FALSEY!!!')
-    }
+    };
   });
   return p;
 }
 
 doBadThing("Heya")
   .then(function(resolve) {
-    console.log(resolve)
+    console.log(resolve);
   })
   .catch(function(reject) {
     console.error(reject);
@@ -77,7 +77,7 @@ doBadThing("Heya")
 
 var Emitter = require('./lib/my-emitter.js');
 var f1 = function() {
-  console.log("delayed");
+  console.log("beeboop");
 }
 
 var f2 = function() {
@@ -86,13 +86,13 @@ var f2 = function() {
 
 var emitter = new Emitter;
 
-emitter.on("thing", f1)
-emitter.on("thing", f1)
-emitter.on("thing", f1)
-emitter.on("stuff", f2)
+emitter.on("thing", f1);
+emitter.on("thing", f1);
+emitter.on("thing", f1);
+emitter.on("stuff", f2);
 
-emitter.emit("thing")
+emitter.emit("thing");
 
 
-// emitter.emit("thing").removeListener("thing", f1).emit("thing")
+// emitter.emit("thing").removeAllListener("thing", f1).emit("thing");
 
