@@ -87,12 +87,12 @@ var f2 = function() {
 var emitter = new Emitter;
 
 emitter.on("thing", f1);
-emitter.on("thing", f1);
+emitter.on("thing", f2);
 emitter.on("thing", f1);
 emitter.on("stuff", f2);
 
 emitter.emit("thing");
 
 
-// emitter.emit("thing").removeAllListener("thing", f1).emit("thing");
+emitter.emit("thing").removeListener("thing", f1)
 
