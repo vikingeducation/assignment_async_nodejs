@@ -1,43 +1,35 @@
 var fs = require('fs');
 
-var fsp = {
+var fsp = {};
 
-  readFile: function(path){
-    fs.readFile(path, 'utf8', function(err, data){
-      if(err){
-        return Promise.reject(err);
-      }
-      else {
-        return Promise.resolve(data);
-      }
+// readFile(fd, options, cb)
+fsp.readFile = function(path, options) {
+  if (!options) {
+    options = 'utf8';
+  }
+  return new Promise(function(resolve, reject) {
+    fs.readFile(path, options, function(err, data) {
+      err ? reject(err) : resolve(data);
     });
-  },
+  });
+};
 
-  writeFile: function(fileName,data){
-    fs.writeFile(fileName,data,function(err){
-      if(err){
-        return Promise.reject(err);
-      }
-      else {
-        return Promise.resolve(data);
-      }
+// writeFile(fd, data, cb)
+fsp.writeFile = function(path, data) {
+  return new Promise(function(resolve, reject) {
+    fs.writeFile(path, data, function(err) {
+      err ? reject(err) : resolve(data);
     });
-  }//,
+  });
+};
 
-  /*appendFile: function(fileName,data){
-    fs.appendFile(fileName,data,function(err){
-      err ? return Promise.reject(err) : return Promise.resolve(
-          fs.readFile(fileName, 'utf8',function(err, data){
-            err ? throw err : return data;
-          }
-        );
-      );
+// appendFile(fd, data, cb)
+fsp.appendFile = function(path, data) {
+  return new Promise(function(resolve, reject) {
+    fs.appendFile(path, data, function(err) {
+      err ? reject(err) : resolve(fsp.readFile(path));
     });
-  }*/
-
+  });
 };
 
 module.exports = fsp;
-/*fsp.readFile('./dummy_text.txt').then(function(data){
-  console.log(data);
-});*/
