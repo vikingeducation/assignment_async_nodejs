@@ -96,3 +96,38 @@ emitter.emit("thing");
 
 emitter.emit("thing").removeListener("thing", f1)
 
+/////////////////////////////////////////////
+
+
+var fsp = require('./lib/my-fs.js')
+
+  fsp.readFile('./data/hello.txt')
+    .then(function(data) {
+      
+      console.log(data);
+    })
+    .catch(function(err) {
+      console.error(err);
+    });
+
+  fsp.writeFile('./data/test.txt', 'Hello!')
+  .then(function(res) {
+    // Outputs the file data
+    // after writing
+    console.log(res);
+  })
+  .catch(function(err) {
+    console.error(err);
+  });
+
+  fsp.appendFile('./data/test.txt', 'Hello again!')
+    .then(function(res) {
+      // Outputs the file data
+      // after appending
+      console.log(res);
+    })
+    .catch(function(err) {
+      console.error(err);
+    });
+
+/////////////////////////////////////////////
