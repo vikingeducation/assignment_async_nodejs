@@ -116,27 +116,27 @@ fsp.appendFile('./data/test.txt', 'Hello again!')
         console.error(err)
     })
 
-let cb1 = () => {
-    console.log('callback 1')
+let foo = () => {
+    console.log('foo')
 }
 
-let cb2 = () => {
-    console.log('callback 2')
+let bar = () => {
+    console.log('bar')
 }
 
-emitter.on('event', cb1)
-emitter.on('event', cb2)
-emitter.on('event_other', cb1).on('event_other', cb2)
+emitter.on('foo', foo)
+emitter.on('foo', bar)
+emitter.on('bar', foo).on('bar', bar)
 
-emitter.emit('event')
-emitter.emit('event_other')
-
-emitter
-    .removeListener('event', cb1)
-    .emit('event')
+emitter.emit('foo')
+emitter.emit('bar')
 
 emitter
-    .removeAllListeners('event_other')
-    .emit('event_other')
+    .removeListener('foo', foo)
+    .emit('foo')
 
-emitter.emit('event')
+emitter
+    .removeAllListeners('bar')
+    .emit('bar')
+
+emitter.emit('foo')
