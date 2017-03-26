@@ -1,4 +1,6 @@
 const fsp = require('./lib/fsp')
+const Emitter = require('./lib/Emitter')
+let emitter = new Emitter()
 
 let p = new Promise((resolve, reject) => {
     setTimeout(() => {
@@ -113,3 +115,28 @@ fsp.appendFile('./data/test.txt', 'Hello again!')
     .catch((err) => {
         console.error(err)
     })
+
+let cb1 = () => {
+    console.log('callback 1')
+}
+
+let cb2 = () => {
+    console.log('callback 2')
+}
+
+emitter.on('event', cb1)
+emitter.on('event', cb2)
+emitter.on('event_other', cb1).on('event_other', cb2)
+
+emitter.emit('event')
+emitter.emit('event_other')
+
+emitter
+    .removeListener('event', cb1)
+    .emit('event')
+
+emitter
+    .removeAllListeners('event_other')
+    .emit('event_other')
+
+emitter.emit('event')
