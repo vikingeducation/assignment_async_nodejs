@@ -1,0 +1,22 @@
+{
+  "name": "assignment_async_nodejs",
+  "version": "1.0.0",
+  "description": "Async Programming",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rabGIT/assignment_async_nodejs.git"
+  },
+  "author": "Richard Bell",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rabGIT/assignment_async_nodejs/issues"
+  },
+  "homepage": "https://github.com/rabGIT/assignment_async_nodejs#readme",
+  "dependencies": {
+    "fs": "0.0.1-security"
+  }
+}
