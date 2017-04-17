@@ -1,3 +1,7 @@
+/*=====================
+   1. Hello Promise
+=====================*/
+
 var hello = new Promise(function(resolve, reject) {
   setTimeout(function() {
     resolve("Hello Promise");
@@ -11,6 +15,10 @@ hello.then(function(result){
     console.error(err);
 });
 
+/*=====================
+   2. Delay * countDown
+=====================*/
+
 var delay = function(milliseconds) {
   return new Promise(function(resolve, reject) {
     setTimeout(function() {
@@ -19,8 +27,8 @@ var delay = function(milliseconds) {
   });
 };
 
-var countDown = function (result) {
-  // console.log(result);
+var countDown = function(result) {
+  console.log(result);
   return delay(result - 100);
 };
 
@@ -34,7 +42,30 @@ delay(1000)
   .then(countDown)
   .then(countDown)
   .then(countDown)
+  .then(countDown)
   .then(countDown);
-//   .then(function(result) {
-//   console.log(result);
-// });
+
+/*=====================
+   1. Squared & Promise All
+=====================*/
+
+var squared = function(num) {
+  return new Promise(function(resolve, reject) {
+    if (typeof num === "number"){
+      resolve(num * num);
+    } else {
+      reject("Not a number!");
+    }
+  });
+};
+
+var myArray = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+myArray = myArray.map(function(num) {
+  return squared(num);
+});
+
+Promise.all(myArray)
+  .then(function(results) {
+    console.log(results);
+});
