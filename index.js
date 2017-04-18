@@ -1,6 +1,6 @@
-/*=====================
+/*==========================================
    1. Hello Promise
-=====================*/
+==========================================*/
 
 var hello = new Promise(function(resolve, reject) {
   setTimeout(function() {
@@ -15,9 +15,9 @@ hello.then(function(result){
     console.error(err);
 });
 
-/*=====================
+/*==========================================
    2. Delay * countDown
-=====================*/
+==========================================*/
 
 var delay = function(milliseconds) {
   return new Promise(function(resolve, reject) {
@@ -45,9 +45,9 @@ delay(1000)
   .then(countDown)
   .then(countDown);
 
-/*=====================
-   1. Squared & Promise All
-=====================*/
+/*==========================================
+   3. Squared & Promise All
+==========================================*/
 
 var squared = function(num) {
   return new Promise(function(resolve, reject) {
@@ -68,4 +68,34 @@ myArray = myArray.map(function(num) {
 Promise.all(myArray)
   .then(function(results) {
     console.log(results);
+});
+
+/*==========================================
+   4. doBadThing
+==========================================*/
+
+var doBadThing = function(forRealz) {
+  return new Promise(function(resolve, reject) {
+    if (!forRealz) {
+      throw "Whoops!";
+      resolve("Yay!");
+    } else {
+      reject("Nope!");
+    }
+  });
+};
+
+doBadThing(0)
+  .then(function(results) {
+    console.log(results);
+  })
+  .catch(function(error) {
+    console.log(error);
+  });
+
+doBadThing(0)
+  .then(function(results) {
+    console.log(results);
+  }, function(error) {
+    console.log(error);
 });
