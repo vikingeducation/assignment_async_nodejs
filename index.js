@@ -1,3 +1,5 @@
+var fsp = require('./file_ops');
+
 /*==========================================
    1. Hello Promise
 ==========================================*/
@@ -98,4 +100,36 @@ doBadThing(0)
     console.log(results);
   }, function(error) {
     console.log(error);
+});
+
+/*==========================================
+   5. fsp wrapper
+==========================================*/
+
+fsp.readFile('./data/lorem.txt')
+  .then(function(data) {
+    console.log(data)
+  })
+  .catch(function(err) {
+    console.error(err);
+});
+
+fsp.writeFile('./data/test.txt', 'Hello!')
+  .then(function(res) {
+    // Outputs the file data
+    // after writing
+    console.log(res);
+  })
+  .catch(function(err) {
+    console.error(err);
+});
+
+fsp.appendFile('./data/lorem.txt', 'Hello again!')
+  .then(function(res) {
+    // Outputs the file data
+    // after appending
+    console.log(res);
+  })
+  .catch(function(err) {
+    console.error(err);
 });
