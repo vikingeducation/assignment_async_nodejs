@@ -15,7 +15,7 @@ var fsp = {
     return new Promise(function(fulfill, reject) {
       fs.writeFile(filename, data, 'utf8', function(err, res) {
         if (err) reject(err);
-        else fulfill(res);
+        else fulfill("successful");
         });
       });
     },
@@ -24,7 +24,7 @@ var fsp = {
       return new Promise(function(fulfill, reject) {
         fs.appendFile(filename, data, 'utf8', function(err, res) {
           if (err) reject(err);
-          else fulfill(res);
+          else fulfill("successful");
         });
       });
     }

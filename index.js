@@ -1,4 +1,5 @@
 var fsp = require('./fsp');
+var Emitter = require('./myEmitter');
 
 // var p = new Promise(function(resolve, reject) {
 //   setTimeout(function() {
@@ -94,32 +95,49 @@ var fsp = require('./fsp');
 //   .catch(function(err) {
 //     console.error(err);
 //   });
+//
+// fsp.readFile('./test.txt')
+//   .then(function(data) {
+//     // Outputs the file data
+//     console.log(data);
+//   })
+//   .catch(function(err) {
+//     console.error(err);
+//   });
+//
+//   fsp.writeFile('./test2.txt', 'Hello!')
+//     .then(function(data) {
+//       // Outputs the file data
+//       // after writing
+//       console.log(data);
+//     })
+//     .catch(function(err) {
+//       console.error(err);
+//     });
+//
+//   fsp.appendFile('./test3.txt', 'Hello again!')
+//   .then(function(res) {
+//     // Outputs the file data
+//     // after appending
+//     console.log(res);
+//   })
+//   .catch(function(err) {
+//     console.error(err);
+//   });
 
-fsp.readFile('./test.txt')
-  .then(function(data) {
-    // Outputs the file data
-    console.log(data);
-  })
-  .catch(function(err) {
-    console.error(err);
-  });
-
-  fsp.writeFile('./test2.txt', 'Hello!')
-    .then(function(data) {
-      // Outputs the file data
-      // after writing
-      console.log(data);
-    })
-    .catch(function(err) {
-      console.error(err);
-    });
-
-  fsp.appendFile('./test2.txt', 'Hello again!')
-  .then(function(res) {
-    // Outputs the file data
-    // after appending
-    console.log(res);
-  })
-  .catch(function(err) {
-    console.error(err);
-  });
+var emitter = new Emitter();
+var namedCallback = function() {
+  console.log('a different event');
+}
+emitter.on('event', () => {
+  console.log('an event occurred!')
+});
+emitter.on('event', () => {
+  console.log('another event occurred!');
+});
+emitter.on("anotherEvent", namedCallback);
+emitter.emit('anotherEvent');
+emitter.removeListener("anotherEvent", namedCallback);
+emitter.emit('anotherEvent');
+emitter.removeAllListeners('event');
+emitter.emit('event');
