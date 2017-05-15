@@ -1,0 +1,22 @@
+{
+  "name": "assignment_async_nodejs",
+  "version": "1.0.0",
+  "description": "Async Node.js sprint Andrew Senner",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/drewdiddy611/assignment_async_nodejs.git"
+  },
+  "author": "Andrew Senner",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/drewdiddy611/assignment_async_nodejs/issues"
+  },
+  "homepage": "https://github.com/drewdiddy611/assignment_async_nodejs#readme",
+  "dependencies": {
+    "fs": "0.0.1-security"
+  }
+}
