@@ -53,3 +53,6 @@ doBadThing(true).then(console.log).catch(console.log);
 doBadThing(false).then(console.log).catch(console.log);
 doBadThing(true).then((r) => { console.log(r); throw "error"; }).catch(console.log);
 }, 6000);
+
+// File operations
+const FS = require('./lib/fsp');
