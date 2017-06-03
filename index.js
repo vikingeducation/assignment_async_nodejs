@@ -88,3 +88,29 @@ Promise.all(nums).then(function(result){
 }, function(err){
   console.log(err);
 });
+
+function doBadThing(forRealz){
+  return new Promise(function(resolve, reject){
+    forRealz ? reject("Whimp!") : resolve("Yay!");
+  });
+}
+doBadThing(false).then(function(result){
+  console.log(result);
+}, function(err){
+  console.log(err);
+});
+doBadThing(true).then(function(result){
+  console.log(result);
+}, function(err){
+  console.log(err);
+});
+/*doBadThing(false).then(function(result){
+  console.log(result);
+}).catch(function(err){
+  console.log(err);
+});
+doBadThing(true).then(function(result){
+  console.log(result);
+}).catch(function(err){
+  console.log(err);
+});*/
