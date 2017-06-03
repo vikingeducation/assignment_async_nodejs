@@ -36,14 +36,14 @@ var myDelay;
 
 function delay(ms){
   myDelay = ms;
-  return new Promise(function(resolve) {
+  return new Promise(function(resolve){
     setTimeout(resolve(myDelay), 0);
   });
 }
-function countDown() {
+function countDown(){
   myDelay == 0 ? console.log("done!") : console.log(myDelay);
   myDelay -= 100;
-  return new Promise(function(resolve) {
+  return new Promise(function(resolve){
     setTimeout(resolve(myDelay), 100);
   });
 }
@@ -59,3 +59,32 @@ delay(1000)
   .then(countDown) //=> 200
   .then(countDown) //=> 100
   .then(countDown); //=> Done!
+
+
+/**
+ * 3. Create a function that accepts a number and returns a promise that
+ * resolves that number squared.
+ *
+ * The promise should reject if it is not passed a number.
+ *
+ * Now map an array of integers 1 to 9 to an array of promises using
+ * the function above.
+ *
+ * Use Promise.all to get the result of all of the promises in the array.
+ */
+function square(n){
+  return new Promise(function(resolve, reject){
+    isNaN(n) ? reject("not a number") : resolve(n*n);
+  });
+}
+
+var nums = [2,4,6,8,10];
+nums = nums.map(function(i){
+  return square(i);
+});
+
+Promise.all(nums).then(function(result){
+  console.log(result);
+}, function(err){
+  console.log(err);
+});
