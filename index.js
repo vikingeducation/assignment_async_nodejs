@@ -94,6 +94,24 @@ function doBadThing(forRealz){
     forRealz ? reject("Whimp!") : resolve("Yay!");
   });
 }
+
+/**
+ * 4.Create a function with this signature doBadThing(forRealz)
+ *
+ * Return a promise that resolves to "Yay!" when forRealz is falsy
+ * The promise should reject when forRealz is truthy
+ * Now call doBadThing with both a true and false value chaining on
+ * .then and .catch
+ *
+ * Experiment with using .catch vs supplying a reject handler in your
+ * .then call
+ *
+ * Experiment using now try throwing an error in the resolve handler of
+ * your .then call
+ *
+ * What do you notice about when the .catch handler and the reject
+ * handler are invoked? - Catch seems to have some kind of delay?
+ */
 doBadThing(false).then(function(result){
   console.log(result);
 }, function(err){
@@ -114,3 +132,95 @@ doBadThing(true).then(function(result){
 }).catch(function(err){
   console.log(err);
 });*/
+
+/***********************************************************************
+                       DIVIDER
+************************************************************************/
+
+/**
+ * 4. Create a fsp module that wraps these fs methods and
+ * makes the following promise based versions possible
+ * fsp.readFile("sometext.txt")
+ *   .then(function(data){
+ *     console.log(data);
+ *   }, function(err){
+ *     console.log(err);
+ *   });
+ *
+ * fsp.writeFile('test.txt', 'Hello!')
+ *   .then(function(res) {
+ *     // Outputs the file data
+ *     // after writing
+ *     console.log(res);
+ *   })
+ *   .catch(function(err) {
+ *     console.error(err);
+ *   });
+ *
+ * fsp.appendFile('test.txt', 'Hello again!')
+ *   .then(function(res) {
+ *     // Outputs the file data
+ *     // after appending
+ *     console.log(res);
+ *   })
+ *   .catch(function(err) {
+ *     console.error(err);
+ *   });
+ */
+const fs = require("fs");
+
+var fsp = function() {
+  function readFile(path) {
+    return new Promise(function(resolve, reject){
+      fs.readFile(path, "utf8", function(err, data){
+        err ? reject("Error opening file") : resolve(data);
+      });
+    });
+  };
+  function writeFile(path, message) {
+    return new Promise(function(resolve, reject){
+      fs.writeFile(path, message, "utf8", function(err, data){
+        err ? reject("Error writing file") : resolve("Done writing file");
+      });
+    });
+  };
+  function appendFile(path, message){
+    return new Promise(function(resolve, reject){
+      fs.appendFile(path, message, "utf8", function(err, data){
+        err ? reject("Error appending to file") : resolve ("Append to file successful");
+      });
+    });
+  };
+  return {
+    readFile: function(path) {return readFile(path);},
+    writeFile: function(path, message) {return writeFile(path, message);},
+    appendFile: function(path, message) {return appendFile(path, message);}
+  };
+}();
+
+fsp.readFile("sometext.txt")
+  .then(function(data){
+    console.log(data);
+  }, function(err){
+    console.log(err);
+  });
+
+fsp.writeFile('test.txt', 'Hello!')
+  .then(function(res) {
+    // Outputs the file data
+    // after writing
+    console.log(res);
+  })
+  .catch(function(err) {
+    console.error(err);
+  });
+
+  fsp.appendFile('test.txt', 'Hello again!')
+  .then(function(res) {
+    // Outputs the file data
+    // after appending
+    console.log(res);
+  })
+  .catch(function(err) {
+    console.error(err);
+  });
