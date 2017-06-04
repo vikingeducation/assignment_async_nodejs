@@ -224,3 +224,12 @@ fsp.writeFile('test.txt', 'Hello!')
   .catch(function(err) {
     console.error(err);
   });
+
+
+  /**
+   * 5.
+   */
+var Emitter = require("./ee");
+
+var emitter = new Emitter();
+emitter.on("click", function(){});
