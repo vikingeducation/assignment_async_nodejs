@@ -1,4 +1,5 @@
 var fsp = require('./lib/fsp');
+var emitter = require('./lib/emitter');
 
 // print after 1 sec
 let p = new Promise(function(resolve, reject) {
