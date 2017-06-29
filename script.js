@@ -22,19 +22,30 @@ let delay = function(milliseconds) {
 	return promise;
 }
 
-let countdown = function() {
+let countdown = function(t) {
 	// going to refer to solutions
+	var output = t > 0 ? t : 'Done!';
+  console.log(output);
+  return delay(t - 100);
 	
 }
 
 delay(1000)
-	.then(function(res) {
-		console.log(res);
-	})
+	.then(countdown)
+	.then(countdown)
+	.then(countdown)
+	.then(countdown)
+	.then(countdown)
+	.then(countdown)
+	.then(countdown)
+	.then(countdown)
+	.then(countdown)
+	.then(countdown)
+	.then(countdown)
 
 
 
-Promise.all and map on arrays
+// Promise.all and map on arrays
 let numbers = function(n) {
 	return new Promise(function(resolve, reject) {
 		if (typeof n !== 'number') {
@@ -59,7 +70,7 @@ Promise.all(arr)
 	})
 
 
-do bad things for realz function
+// do bad things for realz function
 let doBadThing = function(forRealz) {
 	return new Promise(function(resolve, reject) {
 		if (!forRealz) {
