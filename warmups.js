@@ -74,3 +74,34 @@ Promise.all(numPromise)
   .catch(function(error) {
     console.error(error);
   })
+
+
+// catch those errors!
+
+function doBadThing(forRealz) {
+  return new Promise(function(resolve, reject) {
+    if (forRealz) {
+      resolve('Yay!');
+    } else {
+      reject();
+    }
+  })
+}
+
+
+doBadThing(true)
+  .then(function(result) {
+    console.log(result);
+    throw 'oops!';
+  })
+  .catch(function(error) {
+    console.log(error);
+  })
+
+doBadThing(true)
+  .then(function(result) {
+    console.log(result);
+    throw 'oops!';
+  }, function(error) {
+    console.log(error);
+  })
