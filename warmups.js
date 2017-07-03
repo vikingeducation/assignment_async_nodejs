@@ -45,3 +45,32 @@ delay(1000)
   .then(countDown)
   .then(countDown)
   .then(countDown);
+
+
+// async squaring, Promise.all
+
+function asyncSquare(number) {
+  return new Promise(function(resolve, reject) {
+    let parsedNumber = Number(number);
+
+    if (isNaN(parsedNumber)) {
+      reject("That's not a number!");
+
+    } else {
+      resolve(Math.pow(parsedNumber, 2));
+    }
+  });
+}
+
+let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+let numPromise = numbers.map(function(number) {
+  return asyncSquare(number);
+})
+
+Promise.all(numPromise)
+  .then(function(result) {
+    console.log(result);
+  })
+  .catch(function(error) {
+    console.error(error);
+  })
