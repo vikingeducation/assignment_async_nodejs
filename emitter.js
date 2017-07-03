@@ -3,7 +3,7 @@
 function Emitter() {
 
   // store for events and their listeners
-  this.events = {}
+  this.events = {};
 
 
   // register a listener for events of type 'eventType' to trigger 'callback'
@@ -14,7 +14,7 @@ function Emitter() {
     }
 
     // register listener callback
-    this.events[eventType].push(callback)
+    this.events[eventType].push(callback);
 
   };
 
@@ -25,7 +25,7 @@ function Emitter() {
     let callbacks = this.events[eventType];
     if (callbacks !== undefined) {
 
-      // call them all!
+      // call them all (synchronously, to match the Node events API)!
       callbacks.forEach(function(callback) {
         callback();
       });
@@ -34,6 +34,7 @@ function Emitter() {
   };
 
   // remove the given 'callback' from an event of type 'eventType'
+  // note that this only removes one instance to match the Node events API
   this.removeListener = function(eventType, callback) {
 
     // if we have a listener for this 'eventType'
