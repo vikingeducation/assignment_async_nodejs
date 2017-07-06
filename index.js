@@ -55,3 +55,32 @@ Promise.all(numArray)
 	.then(function(number) {
 		console.log(number);
 	});
+
+doBadThing = function(forRealz) {
+	var p = new Promise(function(resolve, reject) {
+		if (!forRealz) {
+			resolve("Yay!");
+		} else {
+			reject("Oh noooooo!")
+		};
+	});
+
+	return p;
+};
+
+doBadThing(true)
+	.then(function(result) {
+		console.log(result);
+	})
+	.catch(function(err) {
+		console.error(err)
+	});
+
+doBadThing(false)
+	.then(function(result) {
+		throw "Whoops~!";
+		console.log(result);
+	})
+	.catch(function(err) {
+		console.error(err)
+	});
