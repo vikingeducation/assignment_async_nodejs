@@ -1,37 +1,27 @@
 "use strict";
 
-/*
-// Option 1: pass variable to callback
-let p = Promise.resolve("Hello Promise!");
-
-p.then(function(message) {
-  // 1 second delay and display "Hello Promise!"
+// HelloWorld Promise Exercise
+let helloWorld = new Promise(function(resolve, reject) {
   setTimeout(() => {
-    console.log(message);
-    return "Hello Promise!";
-  }
-  , 1000);
+      resolve("Hello World!");
+  }, 1000);
 });
 
-// Option 2: pass function with variable with message to callback
-let p = Promise.resolve(setTimeout( () => {console.log("Hello Promise!");}, 1000));
 
+helloWorld.then((result) => {
+    console.log(result);
+  }
+);
 
-function delay(milliseconds){
-  return new Promise(function(resolve, reject) {
-    setTimeout( () => {
-      console.log(milliseconds);
-      resolve(milliseconds)}
-      , milliseconds);
-  });
-}
-
+// CountDown Promise Exercises
 
 function countDown(value){
   if(value > 0) {
+    console.log(value);
     return delay(value - 100);
   } else {
     console.log("Done!");
+    resolve(0);
   }
 }
 
@@ -48,28 +38,26 @@ delay(1000)
   .then(countDown)
   .then(countDown);
 
-
+// Using Promise.all to map a squared array
 function squared(num) {
-  return new Promise(function(resolve, reject) {
-    if(!isNaN(num)) {
-      resolve(num * num);
+  return new Promise((resolve, reject) => {
+    if(isNaN(num)) {
+      reject(num);
     } else {
-      reject();
+      resolve(num * num);
     }
   });
 }
 
 let array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-let arrayPromises = array.map(function(i) {
+Promise.all(array.map((i) => {
   return squared(i);
+}))
+.then((result) => {
+  console.log(result);
 });
 
-Promise.all(arrayPromises)
-  .then(function(results) {
-    console.log(results);
-  });
-  */
 
 function doBadThing(forRealz) {
   return new Promise(function(resolve, result) {
@@ -92,3 +80,4 @@ function doBadThing(forRealz) {
     console.error(err);
   }
 );
+*/
