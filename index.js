@@ -1,3 +1,4 @@
+var fsp = require('./lib/fsp')
 
 /*--
 var pro = new Promise(function(resolve, reject) {if (1===1) {resolve("Hello Promise");} else {reject("Goodbye Promise")}});
@@ -144,7 +145,7 @@ Promise.all(intNum)
   console.log(results);
 });
 
---*/
+
 
 function doBadThing(forRealz) {
   return new Promise(function(resolve, reject) {
@@ -167,3 +168,20 @@ doBadThing(null)
   .catch(function(err) {
     console.log(err);
   });
+
+  --*/
+/*--
+var fs = require('fs');
+
+fs.appendFile("ianstext.txt", "I've added to the file!", function(err) {
+  if(err) {
+        return console.log(err);
+    }
+    console.log("The file was saved!");
+});
+--*/
+
+fsp.appendFile("ianstext.txt", "appended using a Promise function!")
+.then(function(res) {
+  console.log(res);
+})

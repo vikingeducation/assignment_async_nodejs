@@ -1,0 +1,19 @@
+
+Hello,
+
+
+I'm a bunch of text.
+
+Doing texty things.
+
+Like texting?
+
+---------> I drew an arrow.
+
+<------------ and one the other way.
+
+Now it's over there-->           <----------->
+
+Goodbye!
+I've added to the file!
+appended using a Promise function!
