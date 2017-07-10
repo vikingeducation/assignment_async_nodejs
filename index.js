@@ -29,6 +29,8 @@ emitter.emit("click");
 emitter.emit("mouseover");
 emitter.emit("double-click");
 
-emitter.removeAllListeners("click");
+emitter.removeListener("click", function(){
+  console.log("Clicked numba 2!");
+});
 
 emitter.emit("click");
