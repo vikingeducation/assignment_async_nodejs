@@ -44,15 +44,12 @@ delay(1000)
 // exercise 3
 
 function numSquared(num) {
-  var p3 = new Promise(function(resolve, reject) {
+  return new Promise(function(resolve, reject) {
     if (typeof num === 'undefined') {
       reject('please enter a number');
     } else {
       resolve(num * num);
     }
-  });
-  p3.then(function(result) {
-    console.log(result);
   });
 }
 
@@ -65,3 +62,5 @@ Promise.all(arr)
   .then(function(results) {
     console.log(results);
   });
+
+// exercise 4
