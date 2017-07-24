@@ -64,3 +64,30 @@ Promise.all(arr)
   });
 
 // exercise 4
+
+function doBadThing(forRealz) {
+  return new Promise(function(resolve, reject) {
+    if (forRealz) {
+      reject('rejected son');
+    } else {
+      resolve('Yay!');
+    }
+  });
+}
+
+doBadThing(false)
+  .then(function(result) {
+    console.log(result);
+  }, function(err) {
+    console.error(err);
+  });
+
+doBadThing(false)
+  .then(function(result) {
+    console.log(result);
+    throw "i'm sorry my friend";
+  })
+  .catch(function(err) {
+    console.log('throwing that error worked');
+    console.error(err);
+  })
