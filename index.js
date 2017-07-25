@@ -10,7 +10,7 @@ p.then(function(result) {
 		console.log(result);
 });
 
-/*
+
 function delay(milliseconds) { 
   return new Promise( function(resolve) {
     setTimeout( function() {
@@ -19,25 +19,25 @@ function delay(milliseconds) {
   });
 }
 
-function countDown (milliseconds) {
-	return delay(milliseconds);
-}
+let countDown = function (delay) {}
 
 delay(1000)
   .then( function(milliseconds) {
 	console.log( milliseconds);
-  })
+ })
   .then(countDown);
 
   function square(number) {
   	return new Promise( function(resolve, reject) {
-  	if(isNaN(number) == true) {
-  		reject(number);
+  	if(isNaN(number) === true) {
+  		reject('NaN');
   	} else {
   		resolve( number * number);
   	}
   });
 }
+
+
 
 
 
@@ -50,21 +50,20 @@ bench = bench.map(function (number) {
 Promise.all(bench)
 .then( function(result) {
 	console.log(result)
-});*/
+});
 
 
 function doBadThing(forRealz) {
 	return new Promise( function(resolve, reject) {
-		 if (forRealz === false) {
+		 if (forRealz != true) {
 		 	resolve("Yay!");
 		 } else {
-		 	reject("Nay :(");
+		 	reject("Nay");
 		 }
 	});
 }
 
-
-doBadThing(false)
+doBadThing()
 .then( function(result) {
 	console.log(result);
 }, function(err) {
