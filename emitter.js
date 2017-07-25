@@ -1,3 +1,4 @@
+//var Emitter = require('events');
 var Emitter = require('./lib/my_emitter');
 var emitter = new Emitter();
 
