@@ -1,3 +1,22 @@
+var Emitter = require('events');
+var emmiter = new Emitter();
+
+var connectHandler = function connected() {
+	console.log('connection successful!');
+}
+
+var disconnectHandler =  function disconnected() {
+	console.log('disconnection successful!');
+}
+
+emmiter.on('connection', connectHandler);
+emmiter.on('data-received', function() {
+	console.log('data received successfully');
+});
+emmiter.emit('connection');
+emmiter.removeListener('connection', disconnectHandler);
+
+/*
 let p =  new Promise(function(resolve) {
 	setTimeout( function() {
 		resolve('Hello Promise!');
@@ -19,7 +38,9 @@ function delay(milliseconds) {
   });
 }
 
-let countDown = function (delay) {}
+function countDown() {
+	return console.log(delay(milliseconds));
+}
 
 delay(1000)
   .then( function(milliseconds) {
@@ -63,7 +84,7 @@ function doBadThing(forRealz) {
 	});
 }
 
-doBadThing()
+doBadThing( NaN)
 .then( function(result) {
 	console.log(result);
 }, function(err) {
@@ -73,3 +94,4 @@ doBadThing()
 .catch( function(err) {
 	console.error(err)
 });
+*/
