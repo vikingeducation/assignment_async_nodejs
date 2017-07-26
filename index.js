@@ -16,7 +16,7 @@ emmiter.on('data-received', function() {
 emmiter.emit('connection');
 emmiter.removeListener('connection', disconnectHandler);
 
-/*
+
 let p =  new Promise(function(resolve) {
 	setTimeout( function() {
 		resolve('Hello Promise!');
@@ -38,9 +38,6 @@ function delay(milliseconds) {
   });
 }
 
-function countDown() {
-	return console.log(delay(milliseconds));
-}
 
 delay(1000)
   .then( function(milliseconds) {
@@ -59,6 +56,9 @@ delay(1000)
 }
 
 
+function countDown(milliseconds) {
+	return console.log(delay(milliseconds));
+}
 
 
 
@@ -94,4 +94,3 @@ doBadThing( NaN)
 .catch( function(err) {
 	console.error(err)
 });
-*/
