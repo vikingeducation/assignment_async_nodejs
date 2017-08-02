@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/lortza/assignment_async_nodejs/issues"
   },
-  "homepage": "https://github.com/lortza/assignment_async_nodejs#readme"
+  "homepage": "https://github.com/lortza/assignment_async_nodejs#readme",
+  "dependencies": {
+    "delayed": "^1.0.1"
+  }
 }
