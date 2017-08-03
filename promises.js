@@ -41,13 +41,41 @@ delayer(3000);
 
 // Warmup 3:
 // Create a function that accepts a number and returns a promise that resolves that number squared
+function squarer(input){
+  var squaredNum = new Promise(function(resolve, reject) {
+    if( typeof(input) === "number" ){
+      resolve(input * input);
+    } else {
+      reject("Whoops. That's not a number");
+    };
+  });
 
+  squaredNum
+    .then(function(result) {
+      console.log(result);
+    })
+    .catch(function(err) {
+      console.error(err);
+    });
+
+
+};
+// squarer(5);
+
+var nums = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+nums = nums.map(function(i) {
+  return Promise.resolve(squarer(i));
+});
+
+Promise.all(nums)
+  .then(function(results) {
+    console.log(results);
+  });
 
 
 
 // Warmup 4:
 // Create a function with this signature doBadThing(forRealz)
-
 
 
 
