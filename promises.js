@@ -1,6 +1,7 @@
 var delayed = require('delayed');
 
 // Warmup 1:
+// Create a promise that resolves the message "Hello Promise!" after 1 second
 var a = Promise.resolve('Hello Promise 1!');
 
 a.then(function(result){
@@ -9,6 +10,7 @@ a.then(function(result){
 
 
 // Warmup 2.1
+// Create a function with the following signature delay(milliseconds)
 var b = Promise.resolve('Hello Promise 2.1!');
 
 b.then(function(message) {
@@ -36,6 +38,15 @@ delayer(3000);
   // .then(countDown)
   // .then(countDown);
 
+
+// Warmup 3:
+// Create a function that accepts a number and returns a promise that resolves that number squared
+
+
+
+
+// Warmup 4:
+// Create a function with this signature doBadThing(forRealz)
 
 
 
