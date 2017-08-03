@@ -94,32 +94,28 @@ Promise.all(nums)
 
 // Warmup 4:
 // Create a function with this signature doBadThing(forRealz)
+function doBadThing(forRealz){
+  var oppositeLogicker = new Promise(function(resolve, reject) {
+    if (forRealz == false) {
+      resolve("Yay! -- but actually falsy");
+    } else {
+      reject("Rejected, but actually truthy");
+    }
+  });
+  // oppositeLogicker
+  //   .then(function(resolvedResult) {
+  //     console.log(resolvedResult);
+  //   })
+  //   .catch(function(rejectedResult) {
+  //     console.log(rejectedResult);
+  //   });
+  oppositeLogicker
+  .then(function(resolvedResult) {
+    console.log(resolvedResult);
+  }, function(rejectedResult) {
+    console.log(rejectedResult);
+  });
+};
 
-
-
-
-// function sleep(milliseconds) {
-//   var start = new Date().getTime();
-//   for (var i = 0; i < 1e7; i++) {
-//     if ((new Date().getTime() - start) > milliseconds){
-//       break;
-//     }
-//   }
-// }
-
-// var num = 1000;
-
-// while(num > 0){
-//   sleep(num);
-//   console.log(num);
-//   num -= 100;
-// };
-// console.log('Done!');
-
-
-
-
-
-
-
+doBadThing("");
 
