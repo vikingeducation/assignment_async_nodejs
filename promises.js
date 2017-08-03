@@ -1,5 +1,14 @@
 var delayed = require('delayed');
 
+// Warmup 1:
+var promise = Promise.resolve('Hello Promise!');
+
+promise.then(function(result){
+  console.log(result);
+});
+
+
+// Warmup 2:
 var delayer = function(milliseconds){
   // var p = Promise.resolve(milliseconds);
   var p = new Promise(function(resolve, reject) {
