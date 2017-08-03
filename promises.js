@@ -1,55 +1,63 @@
 var delayed = require('delayed');
 
 // Warmup 1:
-var promise = Promise.resolve('Hello Promise!');
+var a = Promise.resolve('Hello Promise 1!');
 
-promise.then(function(result){
+a.then(function(result){
   console.log(result);
 });
 
 
-// Warmup 2:
-var delayer = function(milliseconds){
-  // var p = Promise.resolve(milliseconds);
-  var p = new Promise(function(resolve, reject) {
-    resolve(
-      delayed.delay(function(){
-        console.log(milliseconds);
-      }, milliseconds)
-    );
-  });
+// Warmup 2.1
+var b = Promise.resolve('Hello Promise 2.1!');
 
+b.then(function(message) {
+  delayed.delay(function(){
+    console.log(message);
+  }, 1000);
+});
+
+// Warmup 2.2
+function delayer(milliseconds){
+  var c = Promise.resolve(
+    delayed.delay(function(){
+      console.log(milliseconds);
+      return milliseconds;
+    }, milliseconds)
+  );
 };
 
-delayer(500);
-
-
-// var p = Promise.resolve('Hello Promise!');
-
-// p.then(function(message) {
-//   delayed.delay(function(){
-//     console.log(message);
-//   }, 1000);
-// });
-
-
-function sleep(milliseconds) {
-  var start = new Date().getTime();
-  for (var i = 0; i < 1e7; i++) {
-    if ((new Date().getTime() - start) > milliseconds){
-      break;
-    }
-  }
-}
-
-var num = 1000;
-
-while(num > 0){
-  sleep(num);
-  console.log(num);
-  num -= 100;
+function countDown(){
+  console.log('yo');
 };
-console.log('Done!');
+
+delayer(3000);
+  // .then(countDown)
+  // .then(countDown)
+  // .then(countDown);
+
+
+
+
+
+
+// function sleep(milliseconds) {
+//   var start = new Date().getTime();
+//   for (var i = 0; i < 1e7; i++) {
+//     if ((new Date().getTime() - start) > milliseconds){
+//       break;
+//     }
+//   }
+// }
+
+// var num = 1000;
+
+// while(num > 0){
+//   sleep(num);
+//   console.log(num);
+//   num -= 100;
+// };
+// console.log('Done!');
 
 
 
