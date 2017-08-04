@@ -4,13 +4,13 @@ var dataPath = './data/data.json';
 var textPath = './data/lorem.txt';
 var newText = "This is the new text."
 
-// fsp.readFile(textPath)
-//   .then(function(data) {
-//     console.log(data);
-//   })
-//   .catch(function(err) {
-//     console.error(err);
-//   });
+fsp.readFile(textPath)
+  .then(function(data) {
+    console.log(data);
+  })
+  .catch(function(err) {
+    console.error(err);
+  });
 
 // fsp.writeFile('./data/test.txt', 'Hello!')
 //   .then(function(res) {
