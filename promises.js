@@ -1,60 +1,63 @@
-var delayed = require('delayed');
-
 // Warmup 1:
 // Create a promise that resolves the message "Hello Promise!" after 1 second
-var a = Promise.resolve('Hello Promise 1!');
+var promise = new Promise(function(resolve, reject) {
+  if (true) {
+    resolve("Hello Promise!");
+  } else {
+    reject("Whoa, you screwed up!");
+  };
+});
 
-a.then(function(result){
-  console.log(result);
+promise.then(function(result){
+  setTimeout(function(){console.log(result)}, 1000);
+}, function(err){
+  console.error(err);
 });
 
 
-// Warmup 2.1
+// Warmup 2
 // Create a function with the following signature delay(milliseconds)
-var b = Promise.resolve('Hello Promise 2.1!');
+// Your delay function should return a promise that resolves the value milliseconds
+// after delaying for the specified number of milliseconds
 
-b.then(function(message) {
-  delayed.delay(function(){
-    console.log(message);
-  }, 1000);
-});
-
-// Warmup 2.2
-function delayer(milliseconds){
-  var c = Promise.resolve(
-    delayed.delay(function(){
-      console.log(milliseconds);
-      return milliseconds;
-    }, milliseconds)
-  );
+var delay = function(milliseconds){
+  return new Promise(function(resolve, reject){
+    console.log(milliseconds);
+    var remaining = milliseconds - 100;
+    resolve(remaining);
+    reject("Whoa, you messed up!");
+  });
 };
 
-function countDown(){
-  console.log('yo');
-};
+// Create a countDown function that uses the delay function such that the following
+// chaining and output is possible:
+var countDown = function(remaining) {
 
-delayer(3000);
-  // .then(countDown)
-  // .then(countDown)
-  // .then(countDown);
+  if(remaining <= 0 || remaining == undefined){
+    console.log("DONE!");
+  } else {
+    // use return to return the promise itself instead of just the value of remaining
+    return delay(remaining);
+  }
+}
 
-  // function sleep(milliseconds) {
-  //   var start = new Date().getTime();
-  //   for (var i = 0; i < 1e7; i++) {
-  //     if ((new Date().getTime() - start) > milliseconds){
-  //       break;
-  //     }
-  //   }
-  // }
+delay(1000)
+.then(countDown)
+.then(countDown)
+.then(countDown)
+.then(countDown)
+.then(countDown)
+.then(countDown)
+.then(countDown)
+.then(countDown)
+.then(countDown)
+.then(countDown)
+.then(countDown)
+.then(countDown);
 
-  // var num = 1000;
 
-  // while(num > 0){
-  //   sleep(num);
-  //   console.log(num);
-  //   num -= 100;
-  // };
-  // console.log('Done!');
+
+
 
 
 // Warmup 3:
