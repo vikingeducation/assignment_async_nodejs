@@ -12,14 +12,14 @@ fsp.readFile(textPath)
     console.error(err);
   });
 
-// fsp.writeFile('./data/test.txt', 'Hello!')
-//   .then(function(res) {
-//     console.log(res);
-//     // Outputs the file data after writing
-//   })
-//   .catch(function(err) {
-//     console.error(err);
-//   });
+fsp.writeFile('./data/test.txt', 'Hello!')
+  .then(function(res) {
+    console.log(res);
+    // Outputs the file data after writing
+  })
+  .catch(function(err) {
+    console.error(err);
+  });
 
 // fsp.appendFile('./data/test.txt', 'Hello again!')
 //   .then(function(res) {
