@@ -1,5 +1,5 @@
 /* 1. ****************************************/
-/*
+
 var p = new Promise(function(resolve, reject) {
 	setTimeout(function() {
 		resolve('Hello Promise!');
@@ -9,9 +9,9 @@ var p = new Promise(function(resolve, reject) {
 p.then(function(message) {
 	console.log(message);
 });
-*/
+
 /* 2. ****************************************/
-/*
+
 function delay(milliseconds) {
 	return new Promise(function(resolve, reject) {
 		setTimeout(function() {
@@ -40,9 +40,10 @@ delay(1000)
 	.then(countdown)
 	.then(countdown)
 	.then(countdown);
-*/
+
 /* 3. ****************************************/
-/*function square(num) {
+
+function square(num) {
 	return new Promise(function(resolve, reject) {
 		if (typeof num === 'number' && isFinite(num)) {
 			resolve(num * num);
@@ -60,7 +61,7 @@ Promise.all(squares)
 	.then(function(result) {
 		console.log('All square promises resolve to:', result);
 	});
-*/
+
 /* 4. ****************************************/
 
 function doBadThing(forRealz) {
