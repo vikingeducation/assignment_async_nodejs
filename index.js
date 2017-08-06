@@ -75,48 +75,68 @@ function doBadThing(forRealz) {
 
 doBadThing(true)
 	.then(function(result) {
-		console.log('doBadThing(true)', 'resolves to:', result);
+		console.log('1st doBadThing(true)', 'resolves to:', result);
 	})
 	.catch(function(err) {
-		console.error('doBadThing(true)', 'rejects with catch to:', err);
+		console.error('1st doBadThing(true)', 'rejects with catch to:', err);
 	});
 
 doBadThing(false)
 	.then(function(result) {
-		console.log('doBadThing(false)', 'resolves to:', result);
+		console.log('2nd doBadThing(false)', 'resolves to:', result);
 	})
 	.catch(function(err) {
-		console.error('doBadThing(false)', 'rejects with catch to:', err);
+		console.error('2nd doBadThing(false)', 'rejects with catch to:', err);
 	});
 
 doBadThing(true)
 	.then(function(result) {
-		console.log('doBadThing(true)', 'resolves to:', result);
+		console.log('3rd doBadThing(true)', 'resolves to:', result);
 	}, function(err) {
-		console.error('doBadThing(true)', 'rejects to:', err);
+		console.error('3rd doBadThing(true)', 'rejects to:', err);
 	});
 
 doBadThing(false)
 	.then(function(result) {
-		console.log('doBadThing(false)', 'resolves to:', result);
+		console.log('4th doBadThing(false)', 'resolves to:', result);
 	}, function(err) {
-		console.error('doBadThing(false)', 'rejects to:', err);
+		console.error('4th doBadThing(false)', 'rejects to:', err);
 	});
 
 doBadThing(true)
 	.then(function(result) {
-		console.log('doBadThing(true)', 'resolves to:', result);
+		console.log('5th doBadThing(true)', 'resolves to:', result);
 		throw "throw after resolve";
 	})
 	.catch(function(err) {
-		console.error('doBadThing(true)', 'rejects with catch to:', err);
+		console.error('5th doBadThing(true)', 'rejects with catch to:', err);
 	});
 
 doBadThing(false)
 	.then(function(result) {
-		console.log('doBadThing(false)', 'resolves to:', result);
-		throw "throw after resolve";
+		console.log('6th doBadThing(false)', 'resolves to:', result);
+		throw "throw after 6th resolve";
 	})
 	.catch(function(err) {
-		console.error('doBadThing(false)', 'rejects with catch to:', err);
+		console.error('6th doBadThing(false)', 'rejects with catch to:', err);
+	});
+
+doBadThing(true)
+	.then(function(result) {
+		console.log('7th doBadThing(true)', 'resolves to:', result);
+	}, function(err) {
+		console.error('7th doBadThing(true)', 'rejects to:', err);
+	})
+	.catch(function(err) {
+		console.error('7th doBadThing(true)', 'rejects with catch to:', err);
+	});
+
+doBadThing(false)
+	.then(function(result) {
+		console.log('8th doBadThing(false)', 'resolves to:', result);
+	}, function(err) {
+		console.error('8th doBadThing(false)', 'rejects to:', err);
+	})
+	.catch(function(err) {
+		console.error('8th doBadThing(false)', 'rejects with catch to:', err);
 	});
