@@ -77,3 +77,8 @@ emitter.removeListener('click', function(){
   console.log('Clicked 1');
 });
 
+
+// Remove all listeners on an event with emitter.removeAllListeners(eventType)
+emitter.removeAllListeners('click');
+
+console.log(emitter.events);
