@@ -41,21 +41,21 @@ var newText = "This is the new text."
 var emitter = new Emitter();
 
 // Attach an event listener with emitter.on(eventType, callback)
-emitter.on("click", function(){
-  console.log("Clicked 1");
+emitter.on('click', function(){
+  console.log('Clicked 1');
 });
 
 // Attach subsequent listeners with emitter.on
-emitter.on("click", function(){
-  console.log("Clicked 2");
+emitter.on('click', function(){
+  console.log('Clicked 2');
 });
 
-emitter.on("click", function(){
-  console.log("Clicked 3");
+emitter.on('click', function(){
+  console.log('Clicked 3');
 });
 
-emitter.on("change", function(){
-  console.log("This just changed");
+emitter.on('change', function(){
+  console.log('This just changed');
 });
 
 
