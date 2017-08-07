@@ -89,13 +89,7 @@ function doBadThing(forRealz){
       reject("Rejected, but actually truthy");
     }
   });
-  // oppositeLogicker
-  //   .then(function(resolvedResult) {
-  //     console.log(resolvedResult);
-  //   })
-  //   .catch(function(rejectedResult) {
-  //     console.log(rejectedResult);
-  //   });
+
   oppositeLogicker
   .then(function(resolvedResult) {
     console.log(resolvedResult);
