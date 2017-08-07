@@ -1,11 +1,15 @@
+// Set up modules
 var fsp = require('./lib/fsp');
 var Emitter = require('./lib/emitter');
 
+
+// Set up vars
 var dataPath = './data/data.json';
 var textPath = './data/lorem.txt';
 var newText = "This is the new text."
 
-// readFile
+
+// Output fs functions
 fsp.readFile(textPath)
   .then(function(data) {
     console.log(data);
@@ -14,7 +18,6 @@ fsp.readFile(textPath)
     console.error(err);
   });
 
-// writeFile
 fsp.writeFile('./data/test.txt', 'Hello!')
   .then(function(res) {
     console.log(res);
@@ -24,7 +27,6 @@ fsp.writeFile('./data/test.txt', 'Hello!')
     console.error(err);
   });
 
-// appendFile
 fsp.appendFile('./data/test.txt', 'Hello again!')
   .then(function(res) {
     console.log(res);
@@ -38,3 +40,18 @@ fsp.appendFile('./data/test.txt', 'Hello again!')
 // Set up Emitter
 var emitter = new Emitter();
 emitter.confirmation();
+
+
+// Attach an event listener with emitter.on(eventType, callback)
+
+// Attach subsequent listeners with emitter.on
+
+// Emit an event with emitter.emit(eventType)
+// This should result in all listeners attached to that event being invoked
+
+// Remove a listener with emitter.removeListener(eventType, callback)
+
+// Remove all listeners on an event with emitter.removeAllListeners(eventType)
+
+
+
