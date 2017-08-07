@@ -63,9 +63,17 @@ emitter.on('change', function(){
 // This should result in all listeners attached to that event being invoked
 emitter.emit('click');
 
+
 // Remove a listener with emitter.removeListener(eventType, callback)
+emitter.on('gonnaBeRemoved', function(){
+  console.log('This is going to be removed');
+});
 
-// Remove all listeners on an event with emitter.removeAllListeners(eventType)
+emitter.removeListener('gonnaBeRemoved', function(){
+  console.log('This is going to be removed');
+});
 
-
+emitter.removeListener('click', function(){
+  console.log('Clicked 1');
+});
 
