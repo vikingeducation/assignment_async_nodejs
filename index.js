@@ -46,6 +46,13 @@ emitter.on("click", function(){
 });
 
 // Attach subsequent listeners with emitter.on
+emitter.on("click", function(){
+  console.log("Clicked again");
+});
+
+emitter.on("change", function(){
+  console.log("This just changed");
+});
 
 // Emit an event with emitter.emit(eventType)
 // This should result in all listeners attached to that event being invoked
