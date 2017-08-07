@@ -42,20 +42,26 @@ var emitter = new Emitter();
 
 // Attach an event listener with emitter.on(eventType, callback)
 emitter.on("click", function(){
-  console.log("Clicked!");
+  console.log("Clicked 1");
 });
 
 // Attach subsequent listeners with emitter.on
 emitter.on("click", function(){
-  console.log("Clicked again");
+  console.log("Clicked 2");
+});
+
+emitter.on("click", function(){
+  console.log("Clicked 3");
 });
 
 emitter.on("change", function(){
   console.log("This just changed");
 });
 
+
 // Emit an event with emitter.emit(eventType)
 // This should result in all listeners attached to that event being invoked
+emitter.emit('click');
 
 // Remove a listener with emitter.removeListener(eventType, callback)
 
