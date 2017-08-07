@@ -1,4 +1,5 @@
 var fsp = require('./lib/fsp');
+var Emitter = require('./lib/emitter');
 
 var dataPath = './data/data.json';
 var textPath = './data/lorem.txt';
@@ -32,3 +33,8 @@ fsp.appendFile('./data/test.txt', 'Hello again!')
   .catch(function(err) {
     console.error(err);
   });
+
+
+// Set up Emitter
+var emitter = new Emitter();
+emitter.confirmation();
