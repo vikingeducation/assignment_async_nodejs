@@ -1,0 +1,26 @@
+{
+  "name": "assignment_async_nodejs",
+  "version": "1.0.0",
+  "description": "viking assignment for learning async with node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "console.log('hello world');"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lortza/assignment_async_nodejs.git"
+  },
+  "keywords": [
+    "viking",
+    "node"
+  ],
+  "author": "anne richardson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lortza/assignment_async_nodejs/issues"
+  },
+  "homepage": "https://github.com/lortza/assignment_async_nodejs#readme",
+  "dependencies": {
+    "delayed": "^1.0.1"
+  }
+}
