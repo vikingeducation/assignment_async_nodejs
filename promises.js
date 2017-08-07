@@ -20,29 +20,27 @@ promise.then(function(result){
 // Your delay function should return a promise that resolves the value milliseconds
 // after delaying for the specified number of milliseconds
 
-var delay = function(milliseconds){
-  return new Promise(function(resolve, reject){
-    console.log(milliseconds);
-    var remaining = milliseconds - 100;
-    resolve(remaining);
-    reject("Whoa, you messed up!");
+var delay = function(milliseconds) {
+  return new Promise(function(resolve, reject) {
+    setTimeout(function() {
+      resolve(milliseconds);
+      }, milliseconds);
   });
 };
 
 // Create a countDown function that uses the delay function such that the following
 // chaining and output is possible:
-var countDown = function(remaining) {
-
-  if(remaining <= 0 || remaining == undefined){
-    console.log("DONE!");
+var countDown = function(milliseconds) {
+  if (milliseconds > 0 ) {
+    console.log(milliseconds);
+    // use return to return the promise itself instead of just the value of milliseconds
+    return delay(milliseconds - 100);
   } else {
-    // use return to return the promise itself instead of just the value of remaining
-    return delay(remaining);
+    console.log("DONE!");
   }
-}
+};
 
 delay(1000)
-.then(countDown)
 .then(countDown)
 .then(countDown)
 .then(countDown)
