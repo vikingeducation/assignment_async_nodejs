@@ -20,7 +20,7 @@ fsp.writeFile('./data/test.txt', 'Hello!')
   .catch(function(err) {
     console.error(err);
   });
-/*
+
 fsp.appendFile('./data/test.txt', 'Hello again!')
   .then(function(res) {
     // Outputs the file data
@@ -30,4 +30,3 @@ fsp.appendFile('./data/test.txt', 'Hello again!')
   .catch(function(err) {
     console.error(err);
   });
-*/
