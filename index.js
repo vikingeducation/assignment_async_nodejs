@@ -1,7 +1,9 @@
 const fs = require('fs');
 const fsp = require('./lib/fsp');
 const path = './data/lorem.txt';
+const Emitter = require('events');
 
+var emitter = new Emitter();
 
 let promise = new Promise((resolve) => {
 	setTimeout( () => {
