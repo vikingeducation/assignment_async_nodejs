@@ -1,6 +1,7 @@
 
 var fsp = require('./lib/fsp')
 
+//fsp path for fsp objects
 
 fsp.readFile('./data/lorem.txt')
   .then(function(data) {
@@ -30,3 +31,18 @@ fsp.appendFile('./data/test.txt', 'Hello again!')
   .catch(function(err) {
     console.error(err);
   });
+
+
+
+//EMITTER STUFF
+
+//var Emitter = require('./emitter');
+var events = require('events');
+
+var Emitter = new events.EventEmitter();
+
+Emitter.on('happy', function(message){
+  console.log(message)
+});
+
+Emitter.emit('happy', 'smile was emitted');
