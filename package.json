@@ -1,0 +1,25 @@
+{
+  "name": "assignment_async_nodejs",
+  "version": "1.0.0",
+  "description": "Async Node.js sprint",
+  "main": "warmup.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jenlouie/assignment_async_nodejs.git"
+  },
+  "author": "Jennifer Louie",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jenlouie/assignment_async_nodejs/issues"
+  },
+  "homepage": "https://github.com/jenlouie/assignment_async_nodejs#readme",
+  "dependencies": {
+    "babel-cli": "^6.24.1"
+  },
+  "devDependencies": {
+    "babel-preset-env": "^1.6.0"
+  }
+}
