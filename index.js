@@ -122,3 +122,35 @@ doBadThing(1)
   });
 
 
+
+// Create an Event Emitter from Scratch
+
+var Emitter = require('./event_emitter');
+// var Emitter = require('events');
+var emitter = new Emitter();
+
+function clickCallback() {
+  console.log('clicked');
+}
+
+function clickedAgainCallback() {
+  console.log('clicked again');
+}
+
+emitter.on('click', clickCallback);
+
+emitter.on('click', clickedAgainCallback);
+
+emitter.on('submit', function() {
+  console.log('submitted');
+});
+
+emitter.emit('click');
+
+emitter.removeListener('click', clickCallback);
+
+console.log("Removed the 'click' listener with the 'clickedAgainCallback', now there are " + emitter.listenerCount('click') + " 'click' event listeners");
+
+emitter.removeAllListeners('click');
+
+console.log("Removed all 'click' listeners, now there are " + emitter.listenerCount('click'));
