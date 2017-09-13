@@ -9,17 +9,15 @@ p.then(function(message) {
 // 2. Create a function delay that returns a promise that resolves the value milliseconds after delaying for the specified number of milliseconds
 /*
 var milliseconds;
-var delay = function(milliseconds) {
-  var pq = Promise.resolve(milliseconds);
-  pq.then(function(milliseconds) {
-    setTimeout(function(milliseconds) {
-      console.log(milliseconds);
-    });
-  });
-};
+var delay = new Promise(function(resolve) {
+  setTimeout(function(milliseconds) {
+    resolve(milliseconds);
+  }, milliseconds);
+});
 
 var countDown = function(milliseconds) {
-  milliseconds -= 100;
+  console.log(milliseconds);
+  return (milliseconds -= 100);
 };
 
 delay(1000)
@@ -51,7 +49,6 @@ array = array.map(function(i) {
   return Promise.resolve(squared(i));
 });
 
-// Call the function here, I missed that and was struggling with what was going on
 Promise.all(array).then(
   function(results) {
     console.log(results);
