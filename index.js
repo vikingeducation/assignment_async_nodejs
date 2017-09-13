@@ -7,17 +7,17 @@ p.then(function(message) {
 });
 
 // 2. Create a function delay that returns a promise that resolves the value milliseconds after delaying for the specified number of milliseconds
-/*
-var milliseconds;
-var delay = new Promise(function(resolve) {
-  setTimeout(function(milliseconds) {
-    resolve(milliseconds);
-  }, milliseconds);
-});
+var delay = function(milliseconds) {
+  return new Promise(function(resolve, reject) {
+    setTimeout(function() {
+      resolve(milliseconds);
+    }, milliseconds);
+  });
+};
 
-var countDown = function(milliseconds) {
-  console.log(milliseconds);
-  return (milliseconds -= 100);
+var countDown = function(t) {
+  console.log(t);
+  return delay((t -= 100));
 };
 
 delay(1000)
@@ -32,7 +32,7 @@ delay(1000)
   .then(countDown) //=> 200
   .then(countDown) //=> 100
   .then(countDown); //=> Done!
-*/
+
 // 3. Create a function that accepts a number and returns a promise that resolves that number squared
 
 var squared = function(number) {
