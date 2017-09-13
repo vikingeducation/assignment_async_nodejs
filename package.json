@@ -1,0 +1,22 @@
+{
+  "name": "assignment_async_nodejs",
+  "version": "1.0.0",
+  "description": "Async Node.js sprint\r Jared Gebel\r 9/8/2017",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "https",
+    "url": "https://github.com/jaredjgebel/assignment_async_nodejs"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jaredjgebel/assignment_async_nodejs"
+  },
+  "homepage": "https://github.com/jaredjgebel/assignment_async_nodejs#readme",
+  "dependencies": {
+    "fs": "0.0.1-security"
+  }
+}
