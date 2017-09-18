@@ -1,0 +1,22 @@
+{
+  "name": "assignment_async_nodejs",
+  "version": "1.0.0",
+  "description": "Async Node.js sprint",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heyyodc-git/assignment_async_nodejs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/heyyodc-git/assignment_async_nodejs/issues"
+  },
+  "homepage": "https://github.com/heyyodc-git/assignment_async_nodejs#readme"
+}

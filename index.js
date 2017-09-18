@@ -1,3 +1,5 @@
+var fsp = require('./lib/fsp.js');
+//
 //
 //Assignment source: http://www.vikingcodeschool.com/dashboard#/professional-development-with-javascript/building-with-async-node-js
 //
@@ -121,7 +123,7 @@ var doBadThing = function (forRealz) {
 };
 
 function isFalsy(i) {
-	if ((i === false) || (i === null) || (i === undefined) || (i === NaN) || (i === 0) || (i === "")) {
+	if ((i === false) || (i === null) || (i === undefined) || (i === NaN) || (i === 0) || (i === '')) {
 		return true;
 	} else {
 		return false;
@@ -163,3 +165,33 @@ doBadThing(false).then(function(fromResolve) {
 /*
 Result from (4) above is that it goes to both the .then clause, and the .catch clause
 */
+
+////////////////////////////////////////////////////////////////////////////
+//
+// 5. File Operations and creating own module
+// 		* Create a fsp module that wraps these fs methods 
+//        and makes the following promise based versions possible ... 
+//
+////////////////////////////////////////////////////////////////////////////
+
+fsp.readFile('./data/lorem.txt').then(function(data) {
+	// Outputs the file data
+	console.log(data);
+}).catch(function(err) {
+	console.log(err);
+});
+
+fsp.writeFile('./data/test.txt', 'Hello DC!\n').then(function(res) {
+    // Outputs the file data after writing
+    console.log(res);
+}).catch(function(err) {
+    console.error(err);
+});
+
+//fsp.appendFile('./data/test.txt', 'Hello again!\n');
+fsp.appendFile('./data/test.txt', 'Hello again!\n').then(function(res) {
+    // Outputs the file data after appending
+	console.log(res);
+}).catch(function(err) {
+	console.error(err);
+});
