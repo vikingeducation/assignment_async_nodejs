@@ -1,8 +1,22 @@
-var fsp = require('./lib/fsp.js');
-//
 //
 //Assignment source: http://www.vikingcodeschool.com/dashboard#/professional-development-with-javascript/building-with-async-node-js
 //
+
+const fsp = require('./lib/fsp.js');
+
+//use node's Emitter
+//const Emitter = require('events');
+
+//use my Emitter
+const Emitter = require('./lib/myEvents.js');
+//Emitter is now the function constructor
+
+// now make emitter from the function constructor (Emitter)
+const emitter = new Emitter();
+// emitter is now a fully constructed object
+//in other words, these are now ready to use: 
+//  ... emitter.on()
+//  ... emitter.emit()
 
 ////////////////////////////////////////////////////////////////////////////
 //
@@ -142,12 +156,12 @@ doBadThing(true).then(function(fromResolve) {
 	console.log('2) doBadThing: ' + fromReject);
 });
 
-/*
 doBadThing(true).then(function(fromResolve) {
 	console.log('3) doBadThing: ' + fromResolve);
 }).then(function(fromReject) {
 	console.log('3) doBadThing: ' + fromReject);
 });
+/*
 Result from (3) above is the following: 
 (node:15148) UnhandledPromiseRejectionWarning: Unhandled promise rejection (reje
 ction id: 3): Boo ... (actually truthy)
@@ -181,7 +195,7 @@ fsp.readFile('./data/lorem.txt').then(function(data) {
 	console.log(err);
 });
 
-fsp.writeFile('./data/test.txt', 'Hello DC!\n').then(function(res) {
+fsp.writeFile('./data/test.txt', 'Hello!\n').then(function(res) {
     // Outputs the file data after writing
     console.log(res);
 }).catch(function(err) {
@@ -195,3 +209,61 @@ fsp.appendFile('./data/test.txt', 'Hello again!\n').then(function(res) {
 }).catch(function(err) {
 	console.error(err);
 });
+
+////////////////////////////////////////////////////////////////////////////
+//
+// 6. Create an Event Emitter from Scratch
+//
+////////////////////////////////////////////////////////////////////////////
+
+
+//register some listeners
+emitter.on('click', function() {
+	console.log('clicked - 1');
+});
+
+emitter.on('click', function() {
+	console.log('clicked - 2');
+});
+
+emitter.on('open', function() {
+	console.log('open - 1');
+});
+
+emitter.on('close', function() {
+	console.log('close - 1');
+});
+
+emitter.on('jump', function() {
+	console.log('jump - 1');
+});
+
+emitter.on('swim', function() {
+	console.log('swim - 1');
+});
+
+//emit!
+emitter.emit('click');
+
+//de-register listeners
+emitter.removeListener('click');
+
+//emit to check that listeners have been de-registered
+emitter.emit('click');
+
+//emit others
+emitter.emit('jump');
+emitter.emit('open');
+emitter.emit('close');
+emitter.emit('swim');
+
+//de-register ALL listeners
+//note: my removeAllListeners spec diff than node.js' emitter, and will produce errors when using node.js' version
+emitter.removeAllListeners();
+
+//emit to check that ALL listeners have been de-registered
+emitter.emit('click');
+emitter.emit('jump');
+emitter.emit('open');
+emitter.emit('close');
+emitter.emit('swim');
