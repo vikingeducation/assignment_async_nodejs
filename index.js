@@ -100,6 +100,71 @@ doBadThing(true)
 	});
 
 
+// FILE OPERATIONS
+let fsp = {
+	readFile: function(path) {
+		return new Promise(function(resolve, reject) {
+			var text = fs.readFile(path, 'utf8', (error, data) => {
+				if (error) throw error;
+				resolve(data);
+			});
+		});
+	},
+
+	writeFile: function(path, input) {
+		return new Promise(function(resolve, reject) {
+			var text = fs.writeFile(path, input, 'utf8', (error) => {
+				if (error) reject(error);
+				resolve(fsp.readFile(path));
+			});
+		});
+	},
+
+	appendFile: function(path, input) {
+		return new Promise(function(resolve, reject) {
+			var text = fs.appendFile(path, input, 'utf8', (error) => {
+				if (error) reject(error);
+				resolve(fsp.readFile(path));
+			});
+		});
+	},
+}
+
+
+fsp.readFile('./data/text.txt')
+	.then(function(data) {
+		console.log(data);
+	})
+	.catch(function(error) {
+		console.log(error);
+	});
+
+fsp.writeFile('./data/testy.txt', "The mouse is a big blue rabbit fox hound nugget!!!!")
+	.then(function(data) {
+		console.log("File saved! CONTENTS:  " + data);
+	})
+	.catch(function(error) {
+		console.log(error);
+	});
+
+fsp.appendFile('./data/testy.txt', "  MEOWWWWW!!!")
+	.then(function(data) {
+		console.log("File saved! CONTENTS:  " + data);
+	})
+	.catch(function(error) {
+		console.log(error);
+	});
+
+
+
+// CREATE AN EVEN EMITTER FROM SCRATCH
+//YOUAREHERE
+
+
+
+
+
+
 
 
 
