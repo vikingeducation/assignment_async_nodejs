@@ -23,30 +23,14 @@ function Emitter(eventType, callback) {
 					matchArray.push(item);
 				};
 			});
-
+			
 			if (matchArray === []) {
 				reject("Event not found!");
 			} else {
-				resolve(matchArray[0]);
+				resolve(matchArray);
 			}
 		});
 	};
-
-	// this.emit = function(event) {
-	// 	let matchArray = [];
-	// 	this.listeners.forEach(function(item) {
-	// 		if (item.eventType === event) {
-	// 			matchArray.push(item.callback);
-	// 		};
-	// 	});
-
-	// 	if (matchArray === []) {
-	// 		throw new Error("Event not found!");
-	// 	} else {
-	// 		console.log(matchArray[0]);
-	// 		return matchArray[0];
-	// 	}
-	// }; //this.emit
 }
 
 module.exports = Emitter;

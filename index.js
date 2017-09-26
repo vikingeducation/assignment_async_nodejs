@@ -1,10 +1,26 @@
 "use strict";
 
 const fs = require('fs'),
-	Emitter = require('./modules/emitter');
+
+	Emitter = require('./modules/emitter'),
+	
+	ExecuteCallback = function(data) {
+		if (data.length !== 0) {
+			data.forEach(function(item) {
+				return new Promise(function(resolve, reject) {
+					if (item) {
+						resolve(item.callback());
+					} else {
+						reject("No callback found!");
+					}
+				});
+			});
+		} else {
+			throw new Error("Event not found!");
+		}
+	};
 
 let emitter = new Emitter();
-
 
 // WARMUP 1
 // let promise1 = new Promise(function(resolve, reject) {
@@ -164,16 +180,11 @@ let emitter = new Emitter();
 emitter.on("meow", function(){console.log("poop meow");});
 emitter.on("woof", function(){console.log("poop woof");});
 emitter.on("click", function(){console.log("poop click");});
+emitter.on("woof", function(){console.log("WOOF woof");});
+emitter.on("woof", function(){console.log("KITTYCAT woof");});
 
-emitter.emit("meow")
-	.then(function(data) {
-		if (data) {
-			let returnedFunction = data.callback;
-			returnedFunction();
-		} else {
-			throw new Error("Event not found!");
-		}
-	})
+emitter.emit("woof")
+	.then(ExecuteCallback)
 	.catch(function(error) {
 		console.log(error);
 	});
