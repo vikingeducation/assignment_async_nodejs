@@ -80,9 +80,24 @@ Promise.all(numbers)
 	});
 
 
+// WARMUP 4
+let doBadThing = function(forRealz) {
+	return new Promise(function(resolve, reject) {
+		if(forRealz == true) {
+			resolve("Yay!");
+		} else {
+			reject("BOO.");
+		}
+	});
+}
 
-
-
+doBadThing(true)
+	.then(function(result) {
+		console.log(result);
+	})
+	.catch(function(error) {
+		console.log(error);
+	});
 
 
 
