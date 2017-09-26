@@ -18,7 +18,7 @@ let promise1 = new Promise(function(resolve, reject) {
 		console.log(message);
 	});
 
-debugger;
+
 // WARMUP 2
 let delay = function(milliseconds) {
 	return new Promise(function(resolve, reject) {
@@ -53,6 +53,42 @@ delay(1000)
 	.catch(function(error) {
 		console.log(error);
 	});
+
+
+// WARMUP 3
+let squaredPromise = function(number) {
+	return new Promise(function(resolve, reject) {
+		if (typeof number === 'number') {
+			var numSquared = number * number;
+			resolve(numSquared);
+		} else {
+			reject("NOT A NUMBER");
+		}
+	});
+}
+
+let numbers = [2, 3, 4, 5, 6];
+
+numbers = numbers.map(squaredPromise);
+
+Promise.all(numbers)
+	.then(function(results) {
+		console.log(results);
+	})
+	.catch(function(error) {
+		console.log(error);
+	});
+
+
+
+
+
+
+
+
+
+
+
 
 
 
