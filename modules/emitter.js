@@ -78,8 +78,31 @@ function Emitter(eventType, callback) {
 					return item;
 			}
 		});
-		console.log(this.listeners);
-	}
+		console.log("Current listeners: " + this.listeners);
+	}; //this.removelistener
+
+	this.removeAllListeners = function(event) {
+		this.listeners = this.listeners.filter(function(item) {
+			if (item.eventType !== event) {
+					return item;
+			}
+		});
+		console.log("Current listeners: " + this.listeners);
+	}; //this.removeAllListeners
 }
 
 module.exports = Emitter;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
