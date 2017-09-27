@@ -36,13 +36,13 @@ function Emitter(eventType, callback) {
 		//create the promise to execute each matching callback asynchronously
 		let executeCallback = function(data) {
 			if (data.length !== 0) {
-					return new Promise(function(resolve, reject) {
-						if (data) {
-							resolve(data.callback());
-						} else {
-							reject("No callback found!");
-						}
-					});
+				return new Promise(function(resolve, reject) {
+					if (data) {
+						resolve(data.callback());
+					} else {
+						reject("No callback found!");
+					}
+				});
 			} else {
 				throw new Error("Event not found!");
 			}
