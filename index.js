@@ -2,23 +2,23 @@
 
 const fs = require('fs'),
 
-	Emitter = require('./modules/emitter'),
+	Emitter = require('./modules/emitter');
 
-	ExecuteCallback = function(data) {
-		if (data.length !== 0) {
-			data.forEach(function(item) {
-				return new Promise(function(resolve, reject) {
-					if (item) {
-						resolve(item.callback());
-					} else {
-						reject("No callback found!");
-					}
-				});
-			});
-		} else {
-			throw new Error("Event not found!");
-		}
-	};
+	// ExecuteCallback = function(data) {
+	// 	if (data.length !== 0) {
+	// 		data.forEach(function(item) {
+	// 			return new Promise(function(resolve, reject) {
+	// 				if (item) {
+	// 					resolve(item.callback());
+	// 				} else {
+	// 					reject("No callback found!");
+	// 				}
+	// 			});
+	// 		});
+	// 	} else {
+	// 		throw new Error("Event not found!");
+	// 	}
+	// };
 
 let emitter = new Emitter();
 
@@ -174,23 +174,24 @@ let emitter = new Emitter();
 // 		console.log(error);
 // 	});
 
-//let woofWoof = function(){console.log("WOOF woof");};
+let woofWoof = function(){console.log("WOOF woof");};
 
 // CREATE AN EVENT EMITTER FROM SCRATCH
 emitter.on("meow", function(){console.log("poop meow");});
 emitter.on("woof", function(){console.log("poop woof");});
 emitter.on("click", function(){console.log("poop click");});
-emitter.on("woof", function(){console.log("WOOF woof");});
+emitter.on("woof", function(){setTimeout(function() {console.log("WOOF woof")}
+	, 3000)});
 emitter.on("woof", function(){console.log("KITTYCAT woof");});
 
 
-// emitter.emit("woof")
-// 	.then(ExecuteCallback)
-// 	.catch(function(error) {
-// 		console.log(error);
-// 	});
-
-emitter.removeListener("woof", function(){console.log("WOOF woof");});
+emitter.emit("pooo");
+	// .then(ExecuteCallback)
+	// .catch(function(error) {
+	// 	console.log(error);
+	// });
+//debugger;
+//emitter.removeListener("woof", woofWoof);
 
 
 

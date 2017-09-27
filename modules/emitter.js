@@ -5,6 +5,22 @@ function Emitter(eventType, callback) {
 
 	this.listeners = [];
 
+	this.executeCallback = function(data) {
+		if (data.length !== 0) {
+			data.forEach(function(item) {
+				return new Promise(function(resolve, reject) {
+					if (item) {
+						resolve(item.callback());
+					} else {
+						reject("No callback found!");
+					}
+				});
+			});
+		} else {
+			throw new Error("Event not found!");
+		}
+	};
+
 	this.on = function(eventType, callback) {
 		this.listeners.push({
 			"eventType": eventType,
@@ -15,34 +31,51 @@ function Emitter(eventType, callback) {
 	this.emit = function(event) {
 
 		let listeners = this.listeners;
-		return new Promise(function(resolve, reject) {
+		let matchArray = [];
 
-			let matchArray = [];
-			listeners.forEach(function(item) {
-				if (item.eventType === event) {
-					matchArray.push(item);
-				};
-			});
-			
-			if (matchArray === []) {
-				reject("Event not found!");
+		//create the promise to execute each matching callback asynchronously
+		let executeCallback = function(data) {
+			if (data.length !== 0) {
+					return new Promise(function(resolve, reject) {
+						if (data) {
+							resolve(data.callback());
+						} else {
+							reject("No callback found!");
+						}
+					});
 			} else {
-				resolve(matchArray);
+				throw new Error("Event not found!");
 			}
+		};
+
+		//cycle through each listener to look for a matching event
+		listeners.forEach(function(item) {
+			if (item.eventType === event) {
+				matchArray.push(item);
+			};
 		});
+		
+		//execute each matching event's callback function
+		if (matchArray.length === 0) {
+			throw new Error("Event not found.");
+		} else {
+			matchArray.forEach(function(item) {
+				executeCallback(item);
+			});
+			console.log("Success! Event(s) triggered.");
+		}
+		
 	}; //this.emit
 
 	this.removeListener = function(event, callFunc) {
-		console.log(this.listeners);
+		
+		let eventString = event.toString() + callFunc.toString();
+
 		this.listeners = this.listeners.filter(function(item) {
-			// console.log("ITEM " + item.eventType);
-			// console.log(event);
-			// console.log(item.callback.toString());
-			// console.log(callFunc.toString());
-			if (item.eventType !== event) {
-				if (item.callback.toString() !== callFunc.toString()) {
-					return item; //YOUAREHERE - this is currently filtering out all listeners with a matching eventType, with no regard for the callback match. FIX IT!!!
-				}
+			let currentString = item.eventType.toString() + item.callback.toString();
+			console.log(currentString);
+			if (currentString !== eventString) {
+					return item;
 			}
 		});
 		console.log(this.listeners);
