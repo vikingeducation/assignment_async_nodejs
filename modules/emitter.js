@@ -87,7 +87,7 @@ function Emitter(eventType, callback) {
 					return item;
 			}
 		});
-		console.log("Current listeners: " + this.listeners);
+		
 	}; //this.removeAllListeners
 }
 
