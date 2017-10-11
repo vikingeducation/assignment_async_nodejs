@@ -1,5 +1,4 @@
 
-
 var p = Promise.resolve("Hello Promise!");
 
 p.then( function(message) {
