@@ -9,7 +9,7 @@ I this project I built promise-based interfaces. I used promises to write promis
 If you have [installed node](https://nodejs.org/en/download/) on your computer, type the following commands
 
 ```
-$ node github_api.js
+$ node example.js
 ```
 
 If you want to check statistics of other users run also the following lines after:
