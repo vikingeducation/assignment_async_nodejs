@@ -1,17 +1,20 @@
-var testEven = new Promise(function(resolve, reject) {
-  if (Date.now() % 2 === 0) {
-    resolve('Even');
-  } else {
-    reject('Odd');
+class test {
+  constructor () {
+  this.a = "test";
+  this.b = "exam";
   }
-});
+}
 
 
 
-testEven
-  .then(function(result) {
-    console.log(result);
-  })
-  .catch(function(err) {
-    console.error(err +" = >I'm an error!");
-  });
+var example = new test ();
+
+example.a = [example.a,'b']
+
+
+var array = [1,2,2, 5, 9];
+var index = array.indexOf(5);
+
+if (2 in array) {
+  console.log('hi there')
+}
