@@ -86,9 +86,9 @@ Promise.all(squares)
 
 
 // warm up #4
-// ✔️ Create a function with this signature doBadThing(forRealz)
-  // ✔️ Return a promise that resolves to "Yay!" when forRealz is falsy
-  // ✔️ The promise should reject when forRealz is truthy
+// Create a function with this signature doBadThing(forRealz)
+  // Return a promise that resolves to "Yay!" when forRealz is falsy
+  // The promise should reject when forRealz is truthy
   // Now call doBadThing with both a true and false value chaining on .then and .catch
   // Experiment with using .catch vs supplying a reject handler in your .then call
   // Experiment using now try throwing an error in the resolve handler of your .then call
@@ -117,27 +117,17 @@ doBadThing(true).then (function(result) {
 
 
 
-// Now call doBadThing with both a true and false value chaining on .then and .catch
-// **** come back to this ****
-// how to call two  values? used map with array of 4 values, but only showing one
-// to the console
-
-var bad_things = [false, false, true, true]
-
-bad_things = bad_things.map ( i => {
-  return doBadThing(i);
-});
 
 
-Promise.all(bad_things).then (function(result) {
+doBadThing(true).then (function(result) {
   console.log(result);
+  throw "Hi there."
 })
   .catch(function(err) {
     console.log(err);
   })
 
-// Experiment with using .catch vs supplying a reject handler in your .then call
-// with a rejected hanlder, its functioning as like an if/else statement
+
 
 
 // FILE OPERATIONS

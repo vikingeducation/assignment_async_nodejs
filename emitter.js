@@ -1,29 +1,3 @@
-// var Emitter = require('events');
-//
-//
-// var emitter = new Emitter();
-//
-// emitter.on('party', function () {
-//   console.log('unce unce unce');
-// });
-//
-// emitter.on('time', () => {
-//   console.log('synthesizer')
-// })
-//
-// emitter.removeListener('time', () => {
-//   console.log('synthesizer');
-//   console.log(this)
-// })
-//
-//
-// emitter.emit('party');
-
-//events
-//keys are event names
-//values are functions
-//  when there are multiple functions, the functions are contained within an array
-
 
 class Emitter {
   constructor () {
