@@ -3,6 +3,7 @@ const fs = require('fs');
 const fsp = require('./fsp.js');
 const Emitter = require('./emit.js');
 let emitter = new Emitter();
+const nativeEmitter = require('events');
 
 var hello = new Promise((resolve, reject) => {
   setTimeout(resolve('Hello Promise!'), 1000);
