@@ -67,3 +67,5 @@ if (forRealz){
 }
 
 doBadThing().then(function(result){console.log(result)}).catch(function(err){throw "error!"})
+
+module.exports = squares()
