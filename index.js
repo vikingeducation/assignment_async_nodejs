@@ -1,3 +1,6 @@
+var fsp = require('./node_modules/fsp.js');
+var fs= require('fs');
+
 var p =new Promise(function(resolve, reject){
   setTimeout(function(){resolve('Hello Promise!')}, 1000);
 });
@@ -18,12 +21,15 @@ function delay(milliseconds){
 }
 
 function countDown(number){
-  console.log(number);
   if (number>0){
-    return number-100;
+    console.log(number);
+    number-=100;
   }
-  else
-    return number;
+  else{
+    console.log("Done!");
+    return undefined;
+  }
+  return delay(number);
 };
 
 delay(1000)
@@ -84,3 +90,30 @@ doBadThing(0).then(function(result){
     console.log(error);
   });
 
+fsp.readFile('./data/dummy.txt')
+  .then(function(data){
+    console.log(data);
+  })
+  .catch(function(err){
+    console.log(err);
+  });
+
+fsp.writeFile('./data/test.txt', "Help, I'm trapped in a test file!")
+  .then(function(res) {
+    // Outputs the file data
+    // after writing
+    console.log(res);
+  })
+  .catch(function(err) {
+    console.error(err);
+  });
+
+fsp.appendFile('./data/test.txt', '\nHello again!')
+  .then(function(res) {
+    // Outputs the file data
+    // after appending
+    console.log(res);
+  })
+  .catch(function(err) {
+    console.error(err);
+  });
