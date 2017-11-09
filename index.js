@@ -1,5 +1,7 @@
 var fsp = require('./node_modules/fsp.js');
 var fs= require('fs');
+var Emitter = require('./node_modules/emitter.js');
+var emitter = new Emitter();
 
 var p =new Promise(function(resolve, reject){
   setTimeout(function(){resolve('Hello Promise!')}, 1000);
@@ -117,3 +119,36 @@ fsp.appendFile('./data/test.txt', '\nHello again!')
   .catch(function(err) {
     console.error(err);
   });
+
+function firstFunc(){
+  console.log("this emitter");
+};
+emitter.on("first", function(){
+  console.log("this emitter");
+});
+
+emitter.on("second", function(){
+  console.log("is");
+});
+emitter.on("second", function(){
+  console.log("always going to be");
+});
+
+emitter.on("third", function(){
+  console.log("totally working");
+});
+
+
+emitter.emit("first");
+emitter.emit("second");
+emitter.emit("third");
+
+var tf=emitter.removeListener("first", firstFunc);
+console.log("tf is " +tf);
+emitter.emit("first");
+
+emitter.on("first", firstFunc);
+emitter.removeAllListeners("second");
+emitter.emit("first");
+emitter.emit("second");
+emitter.emit("third");
