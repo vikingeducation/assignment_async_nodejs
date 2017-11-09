@@ -1,6 +1,7 @@
 var fsp = require('./node_modules/fsp.js');
 var fs= require('fs');
-var Emitter = require('./node_modules/emitter.js');
+//var Emitter = require('./node_modules/emitter.js');
+var Emitter = require('events');
 var emitter = new Emitter();
 
 var p =new Promise(function(resolve, reject){
