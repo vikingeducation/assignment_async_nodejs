@@ -12,7 +12,6 @@ doBadThing(true).then(function(result){
 	console.log(result)
 })
 
-
 doBadThing(true).then(function(result){
 	console.log(result)
 }).catch(function(err){

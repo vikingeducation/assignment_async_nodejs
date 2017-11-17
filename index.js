@@ -18,6 +18,7 @@ function delay(milliseconds){
 		}, 1000);
 	})
 }
+
 function countdown(){
 	return delay(count).then(function(){
 		if(count >= 100){
@@ -29,8 +30,6 @@ function countdown(){
 
 	})
 }
-
-
 
 delay( 1000 )
 	.then( countdown )
