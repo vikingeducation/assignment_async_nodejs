@@ -1,7 +1,7 @@
-//var myFuncs = require('./modules/emitter.js')
-var Emitter = require('events');
+var emitter = require('./modules/emitter.js')
+//var Emitter = require('events');
 
-var myEmitter = new Emitter()
+var myEmitter = new emitter.Emitter()
 myEmitter.on("write", function(){ console.log("write") })
 myEmitter.on("write", function(){ console.log("read") })
 myEmitter.on("write", function(){ console.log("hello") })
