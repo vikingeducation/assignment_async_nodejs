@@ -80,6 +80,7 @@ var doBadThings = function(forRealz) {
       resolve('Yay!');
     } else {
       reject('rejected');
+      throw 'this got thrown';
     }
   });
 };
