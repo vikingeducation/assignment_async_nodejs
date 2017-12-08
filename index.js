@@ -1,4 +1,4 @@
-var Emitter = require('./emitter.js');
+var Emitter = require('events'); //require('./emitter.js');
 var emitter = new Emitter();
 
 let callbackOne = function() {
@@ -12,20 +12,19 @@ let callbackThree = function() {
 };
 
 var emitter = new Emitter();
-emitter.on('a', callbackOne)
- .on('a', callbackTwo)
- .on('a', callbackThree);
+emitter
+  .on('a', callbackOne)
+  .on('a', callbackTwo)
+  .on('a', callbackThree);
 
- emitter.emit('a');
+emitter.emit('a');
 
-  emitter.removeListener('a', callbackTwo);
+emitter.removeListener('a', callbackTwo);
 
-  emitter.on('b', callbackOne)
-   .on('b', callbackTwo);
+emitter.on('b', callbackOne).on('b', callbackTwo);
 
-   emitter.on('a', callbackThree);
-  emitter.emit('a');
-  emitter.emit('b');
-console.log(emitter.removeAllListeners('b'));
-  emitter.removeListener('a', callbackThree);
-console.log(emitter);
+emitter.on('a', callbackThree);
+emitter.emit('a');
+emitter.emit('b');
+emitter.removeAllListeners('b');
+emitter.removeListener('a', callbackThree);
