@@ -1,5 +1,5 @@
-//const Emitter = require('./emitter');
-const Emitter = require('events');
+const Emitter = require('./emitter');
+//const Emitter = require('events');
 
 const emitter = new Emitter();
 
