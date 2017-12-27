@@ -1,4 +1,3 @@
-/*
 // Warmup #1:
 //
 // Promise resolves the message 'Hello Promise!' after one second
@@ -70,7 +69,6 @@ Promise.all( numbers )
   .then( results => console.log( results ))
   .catch( err => console.error( err ));
 
-*/
 
 // Warmup #4:
 //
