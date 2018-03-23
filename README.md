@@ -1,7 +1,7 @@
-# assignment_async_nodejs
+# learning_async_js
 Async Node.js sprint
 
 
 Gregory Alford
 
-Still confused about the emitter from scratch
+Practicing asynchronous js
