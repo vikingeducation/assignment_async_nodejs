@@ -1,0 +1,19 @@
+{
+  "name": "async",
+  "version": "1.0.0",
+  "description": "asynchronous node programming practice",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BrennanFulmer/assignment_async_nodejs.git"
+  },
+  "author": "Brennan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BrennanFulmer/assignment_async_nodejs/issues"
+  },
+  "homepage": "https://github.com/BrennanFulmer/assignment_async_nodejs#readme"
+}
