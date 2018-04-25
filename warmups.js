@@ -3,7 +3,9 @@
   cd Documents/Viking/Node/async
 */
 
-// create a promise that resolves "Hello Promise!" after one second using .then
+/*
+create a promise that resolves "Hello Promise!" after one second using .then
+
 var greet = new Promise(function(resolve, reject) {
   resolve("Hello Promise!");
 });
@@ -14,9 +16,12 @@ greet.then(function(greeting) {
   }, 1000);
 });
 
-/* Create a delay(milliseconds) function that should return a promise that
+*/
+
+/*
+Create a delay(milliseconds) function that should return a promise that
 resolves the value milliseconds after delaying for the specified number of
-milliseconds */
+milliseconds
 
 function delay(milliseconds) {
   return new Promise((resolve, reject) => {
@@ -47,6 +52,49 @@ delay(1000)
   .then(countDown)
   .then(countDown)
   .then(countDown);
+*/
+
+/*
+Create a function that accepts a number and returns a promise that resolves
+that number squared, reject if not passed a number, and map an array of
+numbers 1-9 to the function using promise.all
+
+var integers = [1,2,3,4,5,6,7,8,9];
+
+function squared(number) {
+  var square = new Promise((resolve, reject) => {
+    if (isNaN(number)) {
+      reject("Argument wasn't a number");
+    } else {
+      resolve(number * number);
+    }
+  });
+  return square;
+}
+
+Promise.all(integers.map(squared)).then(results => {
+  console.log(results);
+});
+*/
+
+// excercise four
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
