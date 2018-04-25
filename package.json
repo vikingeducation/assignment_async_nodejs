@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/BrennanFulmer/assignment_async_nodejs/issues"
   },
-  "homepage": "https://github.com/BrennanFulmer/assignment_async_nodejs#readme"
+  "homepage": "https://github.com/BrennanFulmer/assignment_async_nodejs#readme",
+  "dependencies": {
+    "fs": "0.0.1-security"
+  }
 }
