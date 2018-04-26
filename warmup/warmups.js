@@ -1,7 +1,7 @@
 
 // create a promise that resolves "Hello Promise!" after one second using .then
 var greet = new Promise(function(resolve, reject) {
-  resolve("Hello Promise!");
+  resolve(`Hello Promise!`);
 });
 
 greet.then(function(greeting) {
@@ -20,8 +20,7 @@ function delay(milliseconds) {
         console.log(milliseconds);
         resolve(milliseconds);
       } else {
-        console.log("Done!");
-        // throw new Error("Done!");
+        console.log(`Done!`);
       }
     }, milliseconds);
   });
@@ -52,7 +51,7 @@ var integers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 function squared(number) {
   return new Promise((resolve, reject) => {
     if (isNaN(number)) {
-      reject("Argument wasn't a number");
+      reject(`Argument wasn't a number`);
     } else {
       resolve(number * number);
     }
@@ -68,9 +67,9 @@ vice versa */
 function doBadThing(forRealz) {
   var baddest = new Promise((resolve, reject) => {
     if (forRealz == false) {
-      resolve("Yay!");
+      resolve(`Yay!`);
     } else if (forRealz == true) {
-      reject("Only false will resolve");
+      reject(`Only false will resolve`);
     }
   });
   baddest.then(
