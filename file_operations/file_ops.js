@@ -1,57 +1,36 @@
 
 /*
-  cd Documents/Viking/Node/async
+  debugger;
 */
 
-const fs = require('fs');
+var fsp = require('../lib/fsp');
 
-/* fs.readFile('dummy.txt', 'utf8', (err, data) => {
-  if (err) throw err;
-  console.log('I read "' + data + '"');
-});
-
-fs.writeFile('dummy.txt', 'test', 'utf8', (err) => {
-  if (err) throw err;
-  console.log('file overwritten');
-});
-
-fs.appendFile('dummy.txt', 'example', 'utf8', (err) => {
-  if (err) throw err;
-  console.log('data appended');
-}); */
-
-/* fsp.readFile('dummy.txt')
-  .then(function(data) {
-    // Outputs the file data
+fsp.readFile("dummy.txt").then(function(data) {
     console.log(data);
+  }).catch(function(err) {
+    throw new Error(err);
+  });
+
+/*
+fsp
+  .writeFile("dummy.txt", "Hello!")
+  .then(function(res) {
+    // Outputs the file data
+    // after writing
+    console.log(res);
   })
   .catch(function(err) {
     throw new Error(err);
-  }); */
+  });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// spacing
+fsp
+  .appendFile("dummy.txt", "Hello again!")
+  .then(function(res) {
+    // Outputs the file data
+    // after appending
+    console.log(res);
+  })
+  .catch(function(err) {
+    throw new Error(err);
+  });
+*/
