@@ -1,2 +1,5 @@
 # assignment_async_nodejs
-Async Node.js sprint
+
+by Brennan Fulmer
+
+Just some Node.js practice
