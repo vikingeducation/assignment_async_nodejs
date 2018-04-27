@@ -1,14 +1,6 @@
 
-/*
-  cd Documents/Viking/Node/async
-*/
-
 var emitter = function() {
   var events = {};
-
-  this.getter = () => {
-    console.log(events);
-  }
 
   this.on = function(eventName, listener) {
     if (events[eventName] == undefined) {
@@ -17,7 +9,7 @@ var emitter = function() {
       events[eventName].push(listener);
     }
     return this;
-  }
+  };
 
   this.emit = function(eventName, ...rest) {
     if (events[eventName] == undefined) {
@@ -33,7 +25,7 @@ var emitter = function() {
       }
       return true;
     }
-  }
+  };
 
   this.removeListener = function(eventName, listener) {
     if (events[eventName] != undefined) {
@@ -43,13 +35,12 @@ var emitter = function() {
       }
     }
     return this;
-  }
+  };
 
   this.removeAllListeners = function(eventName) {
     events[eventName] = undefined;
     return this;
-  }
-
-}
+  };
+};
 
 module.exports = emitter;

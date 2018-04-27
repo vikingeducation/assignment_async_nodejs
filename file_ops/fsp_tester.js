@@ -1,5 +1,5 @@
 
-var fsp = require(`../lib/fsp`);
+var fsp = require(`../modules/promise_fs`);
 
 fsp
   .readFile(`dummy.txt`)
