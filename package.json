@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/BrennanFulmer/assignment_async_nodejs#readme",
   "dependencies": {
+    "events": "^2.0.0",
     "fs": "0.0.1-security"
   }
 }
