@@ -2,4 +2,4 @@
 
 by Brennan Fulmer
 
-Just some asynchronous Node.js practice exercises
+Just some Node.js practice

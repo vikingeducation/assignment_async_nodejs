@@ -16,20 +16,16 @@ function charlie() {
 }
 
 emitter.on(`event`, alpha);
-
 emitter
   .on(`event_2`, alpha)
   .on("event", bravo)
   .on(`event`, charlie);
 
 emitter.emit(`event`);
-
 emitter.emit(`event_2`);
 
 emitter.removeListener(`event`, alpha);
-
 emitter.removeAllListeners(`event_2`);
 
 emitter.emit(`event`);
-
 emitter.emit(`event_2`);

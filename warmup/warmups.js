@@ -1,13 +1,13 @@
 
 // create a promise that resolves "Hello Promise!" after one second using .then
 var greet = new Promise(function(resolve, reject) {
-  resolve(`Hello Promise!`);
+  setTimeout(() => {
+    resolve(`Hello Promise!`);
+  }, 1000);
 });
 
 greet.then(function(greeting) {
-  setTimeout(() => {
-    console.log(greeting);
-  }, 1000);
+  console.log(greeting);
 });
 
 /* Create a delay(milliseconds) function that should return a promise that
@@ -26,8 +26,8 @@ function delay(milliseconds) {
   });
 }
 
-function countDown(ms) {
-  return delay(ms - 100);
+function countDown(time) {
+  return delay(time - 100);
 }
 
 delay(1000)
@@ -58,9 +58,14 @@ function squared(number) {
   });
 }
 
-Promise.all(integers.map(squared)).then(results => {
-  console.log(results);
-});
+Promise.all(integers.map(squared)).then(
+  results => {
+    console.log(results);
+  },
+  error => {
+    console.log(error);
+  }
+);
 
 /* basically play with the differences between then with and without catch and
 vice versa */
@@ -73,10 +78,10 @@ function doBadThing(forRealz) {
     }
   });
   baddest.then(
-    (response) => {
+    response => {
       console.log(response);
     },
-    (broke) => {
+    broke => {
       console.log(broke);
     }
   );
