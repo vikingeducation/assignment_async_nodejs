@@ -1,0 +1,22 @@
+{
+  "name": "assignment_async_nodejs",
+  "version": "1.0.0",
+  "description": "asynchronous node programming practice",
+  "main": "warmups.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/megantaylor/assignment_async_nodejs.git"
+  },
+  "keywords": [
+    "nodejs"
+  ],
+  "author": "megan taylor",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/megantaylor/assignment_async_nodejs/issues"
+  },
+  "homepage": "https://github.com/megantaylor/assignment_async_nodejs#readme"
+}
