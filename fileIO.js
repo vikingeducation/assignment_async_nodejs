@@ -1,5 +1,4 @@
 //Take the Node.js fs modules and wrap in promises.
-
 var fs = require('fs');
 
 var fsp = {
@@ -10,17 +9,37 @@ var fsp = {
       });
     });
   },
-  writeFile : function (filename, data) {
+  writeFile : function (path, data) {
     return new Promise ( function (resolve, reject) {
-      fs.writeFile(filename, data, 'utf8', (err,res) => {
-        err ? console.error("write err", err) : console.log("write data", data);
+      fs.writeFile(path, data, function(err) {
+        if (err) {
+          reject(err);
+        } else {
+          fsp.readFile(path)
+            .then(function(data) {
+              resolve(data);
+            })
+            .catch(function(err) {
+              reject(err);
+            });
+        }
       });
     });
   },
-  appendFile : function (filename, data) {
+  appendFile : function (path, data) {
     return new Promise ( function (resolve, reject) {
-      fs.appendFile (filename, data, 'utf8', (err,res) => {
-        err ? console.error("append err", err) : console.log("append data", data);
+      fs.appendFile(path, data, function(err) {
+        if (err) {
+          reject(err);
+        } else {
+          fsp.readFile(path)
+            .then(function(data) {
+              resolve(data);
+            })
+            .catch(function(err) {
+              reject(err);
+            });
+        }
       });
     });
   }
