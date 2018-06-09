@@ -63,3 +63,36 @@ Promise.all(array.map(squared)).then(
     console.log(error);
   }
 );
+
+//4. Experiment with catch vs reject
+var doBadThing = forRealz => {
+  return new Promise( ( resolve, reject ) => {
+    if( forRealz ) {
+      reject('Ew');
+    } else {
+      resolve( 'Yay!');
+    }
+  });
+};
+
+doBadThing( true )
+  .then( result => console.log( result ))
+  .catch( error => console.error( error ));
+
+doBadThing( false )
+  .then( result => console.log( result ))
+  .catch( error => console.error( error ));
+
+doBadThing( false )
+  .then( result => {
+    console.log( result );
+    throw "ERROR!";
+  })
+  .catch( error => console.error( error ));
+
+doBadThing( true )
+  .then( result => {
+    console.log( result );
+  },
+    err => console.error( err )
+  );
