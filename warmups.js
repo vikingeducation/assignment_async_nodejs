@@ -8,17 +8,17 @@ var helloPromise = new Promise(function(resolve, reject) {
 });
 
 helloPromise.then(function(hello) {
-  console.log(hello);
+  console.log("helloPromise", hello);
 });
 
 //2. Create a delay(milliseconds) function that should return a promise thatresolves the value milliseconds after delaying for the specified number of milliseconds
 function delay(milliseconds) {
   return new Promise((resolve, reject) => {
     if (milliseconds > 0) {
-      console.log(milliseconds);
+      console.log("delay", milliseconds);
       resolve(milliseconds);
     } else {
-      console.log(`Done!`);
+      console.log(`Countdown Done!`);
     }
   });
 }
@@ -39,3 +39,27 @@ delay(1000)
   .then(countDown) //=> 200
   .then(countDown) //=> 100
   .then(countDown); //=> Done!
+
+
+//3. Create a function that accepts a number and returns a promise that resolves that number squared. The promise should reject if it is not passed a number. Map an array of integers 1 to 9 to an array of promises using the function. Use Promise.all to get the result of all of the promises in the array.
+
+var array = [1,2,3,4,5,6,7,8,9];
+
+function squared(num) {
+  return new Promise((resolve, reject) => {
+    if (isNaN(num)) {
+      reject(num);
+    } else {
+      resolve(num*num);
+    }
+  });
+}
+
+Promise.all(array.map(squared)).then(
+  results => {
+    console.log("squared", results);
+  },
+  error => {
+    console.log(error);
+  }
+);
