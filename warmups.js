@@ -15,15 +15,16 @@ helloPromise.then(function(hello) {
 function delay(milliseconds) {
   return new Promise((resolve, reject) => {
     if (milliseconds > 0) {
-      console.log("delay", milliseconds);
       resolve(milliseconds);
     } else {
-      console.log(`Countdown Done!`);
+      resolve(0);
     }
   });
 }
 
 function countDown(time) {
+  var output = time > 0 ? time : 'Done!';
+  console.log(output);
   return delay(time - 100);
 }
 
@@ -68,7 +69,7 @@ Promise.all(array.map(squared)).then(
 var doBadThing = forRealz => {
   return new Promise( ( resolve, reject ) => {
     if( forRealz ) {
-      reject('Ew');
+      reject('Nope');
     } else {
       resolve( 'Yay!');
     }
