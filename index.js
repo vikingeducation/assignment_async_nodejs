@@ -48,4 +48,60 @@ delay(1000)
   .then(countDown) //=> 100
   .then(countDown); //=> Done!
 
-  //warmup 3
+//warmup 3
+var oneToNine = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+var squared = function(n){
+  if (!isNaN(n)) {
+    return Promise.resolve(n * n);
+  }
+};
+
+var newArray = oneToNine.map(function(i){
+  return squared(i);
+});
+
+Promise.all(newArray)
+  .then(function(result){
+    console.log(result);
+  })
+
+
+//warmup 4
+
+var doBadThing = function(forReal){
+  return forReal ?  Promise.resolve("YAY!") :  Promise.reject(forReal);
+};
+
+doBadThing(true)
+  .then(function(result){
+    //the Promise.resolve()
+    console.log('result', result)
+  },
+  function(err){
+    //the Promise.reject()
+    console.log('err', err);
+  });
+
+
+//not using catch
+doBadThing(false)
+  .then(function(result){
+    console.log('result', result)
+  },
+  function(err){
+    console.log('err', err);
+  });
+
+
+//using catch
+doBadThing(false)
+  .then(function(result){
+    console.log('result', result)
+
+    //using throw will fire .catch()
+    throw "gibberish"
+
+  }).catch(function(err){
+    console.log("catch", err);
+  })
